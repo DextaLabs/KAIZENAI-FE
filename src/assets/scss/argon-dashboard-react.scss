@@ -1,0 +1,170 @@
+/*!
+
+=========================================================
+* DextaLabs Sass React - v1.2.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
+* Copyright 2021 Dexta Sass (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
+
+* Coded by Dexta Sass
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+// Core
+$theme-colors: (
+	"primary": #6a00ff,
+	"dark": #1a1a1a,
+	"dark-1": #292929,
+	"dark-2": #404040,
+	"black": #1f1f1f,
+);
+
+@import "argon-dashboard/custom/functions";
+@import "argon-dashboard/custom/variables";
+@import "argon-dashboard/custom/mixins";
+
+// bootstrap (4.6.0) components
+
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+// Argon utilities and components
+
+@import "argon-dashboard/custom/reboot";
+@import "argon-dashboard/custom/utilities";
+@import "argon-dashboard/custom/components";
+
+// Vendor (Plugins)
+
+@import "argon-dashboard/custom/vendors";
+
+// Docs components
+
+@import "argon-dashboard/docs/variables";
+@import "argon-dashboard/docs/nav";
+@import "argon-dashboard/docs/clipboard-js";
+@import "argon-dashboard/docs/component-examples";
+@import "argon-dashboard/docs/prism";
+@import "argon-dashboard/docs/content";
+@import "argon-dashboard/docs/sidebar";
+@import "argon-dashboard/docs/footer";
+
+// React Differences
+@import "react/react-differences";
+
+body {
+	background-color: #1a1a1a;
+	font-family: "Roboto", sans-serif;
+}
+.auth-layout {
+	width: 100%;
+	min-height: 100vh;
+}
+
+.shadow-primary {
+	box-shadow: 0 2px 100px 2px rgba(106, 0, 255, 0.25);
+}
+
+.navbar-icon {
+	width: 40px;
+	height: 40px;
+	background-color: #404040;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	color: white;
+	margin-right: 15px;
+}
+
+.navbar-nav {
+	.nav-link {
+		&.active {
+			color: #ffffff !important;
+			.navbar-icon {
+				background-color: #6a00ff;
+			}
+			&::before {
+				display: none;
+			}
+		}
+		color: #e0e0e0 !important;
+	}
+}
+.sidebar {
+	left: -300px !important;
+	z-index: 20;
+	background: #1a1a1a;
+}
+.opened .sidebar {
+	left: 0 !important;
+}
+.main-content {
+	margin-left: 0 !important;
+}
+.stat-card {
+	&-icon {
+		background-color: #00829b;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		font-size: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+.navbar-vertical.navbar-expand-sm {
+	display: flex !important;
+	position: fixed !important;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	max-width: 250px;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	overflow-y: auto;
+}
+.navbar-vertical [class*="container"] {
+	flex-direction: column;
+	align-items: stretch;
+	min-height: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
