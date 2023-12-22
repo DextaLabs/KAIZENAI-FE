@@ -19,6 +19,7 @@ const Forms = (props: propType) => {
     isSubmitting,
     errors,
     handleBlur,
+    touched,
   } = useFormik({
     initialValues: initialValue,
     validationSchema: validate,
@@ -26,11 +27,19 @@ const Forms = (props: propType) => {
       onSubmit(values);
     },
     validateOnChange: false,
+
     validateOnBlur: true,
   });
 
   return (
-    <form noValidate onSubmit={handleSubmit}>
+    <form
+      noValidate
+      onSubmit={e => {
+        e.preventDefault();
+        e.stopPropagation();
+        handleSubmit(e);
+      }}
+    >
       {Children.map(children, child =>
         cloneElement(child, {
           handleChange,
@@ -38,6 +47,7 @@ const Forms = (props: propType) => {
           isSubmitting,
           errors,
           handleBlur,
+          touched,
         })
       )}
     </form>

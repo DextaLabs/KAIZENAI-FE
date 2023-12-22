@@ -6,4 +6,5 @@ export type FormPropType = {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errors: FormikErrors<FormikValues>;
   handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  touched: FormikErrors<FormikValues>;
 };

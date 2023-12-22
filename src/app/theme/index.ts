@@ -19,6 +19,7 @@ export enum ThemeColor {
   YELLOW = "#FFBF15",
   GRAY = "#EAEAEA",
   PURPLE_NAV = "#6839A7",
+  ERROR = "#F00",
 }
 
 const theme = createTheme({

@@ -1,24 +1,14 @@
-export const loadDefaultHeaders = () => {
-  const auth_token = getStorageItem("auth_token") || "";
-  return {
-    "Content-Type": "application/json",
-    "X-API-Token": auth_token,
-  };
-};
+import { BaseQueryApi } from "@reduxjs/toolkit/query";
+import { RootState } from "../store";
 
-export const prepareHeaders = (headers: Headers) => {
-  const newHeaders = loadDefaultHeaders();
-  Object.keys(newHeaders).forEach(header => {
-    headers.set(header, "newHeaders[header]");
-  });
+export const prepareHeaders = async (
+  headers: Headers,
+  api: Pick<BaseQueryApi, "type" | "getState" | "extra" | "endpoint" | "forced">
+) => {
+  const store = api.getState() as RootState;
+  const token = store.authentication.token;
+
+  headers.set("Content-Type", "application/json");
+  headers.set("Authorization", `Bearer ${token}`);
   return headers;
-};
-
-export const getStorageItem = (key: string) => {
-  //first check if app is impersonating an account
-  if (sessionStorage.getItem("impersonate")) {
-    return sessionStorage.getItem(key);
-  } else {
-    return localStorage.getItem(key);
-  }
 };

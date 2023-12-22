@@ -4,3 +4,7 @@ export type DateRangeType = {
   frequency: "daily" | "hourly";
   preset: string;
 };
+
+export type ErrorType = {
+  detail: string;
+};

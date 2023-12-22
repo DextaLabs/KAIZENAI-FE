@@ -1,21 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import cookie from "cookie";
+import { TOKEN_KEY } from "@/app/utils/localStoreKey";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (req.method === "GET") {
-      res.setHeader(
-        "Set-Cookie",
-        cookie.serialize("token", req.body.token, {
-          httpOnly: true,
-          secure: process.env.NODE_ENV !== "development",
-          maxAge: 24 * 60 * 60,
-          sameSite: "strict",
-          path: "/",
-        })
-      );
+      let authHeader = req.cookies[TOKEN_KEY];
       res.statusCode = 200;
-      res.json({ token: req.cookies.token });
+      res.json({ token: authHeader });
     }
     res.setHeader("Allow", "GET");
     return res.status(405).json({ error: "Method not allowed" });
@@ -23,3 +14,5 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(500).json({ error });
   }
 }
+
+export default handler;

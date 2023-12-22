@@ -4,6 +4,17 @@ import * as Yup from "yup";
 import { FormPropType } from "../Shared/Types/formPropType";
 import classNames from "classnames";
 import { Inter, Josefin_Sans } from "next/font/google";
+import Alert from "@mui/material/Alert";
+import {
+  useLazyGetUsersMeQuery,
+  useLoginUserMutation,
+} from "@/app/store/authentication/api";
+import { LoginBodyType } from "../Shared/Types/login";
+import axios from "axios";
+import { useEffect } from "react";
+import { setAuthData, useAuthStore } from "@/app/store/authentication";
+import { useAppDispatch } from "@/app/store";
+import { id } from "date-fns/locale";
 import { useRouter } from "next/navigation";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
@@ -14,9 +25,7 @@ const inter = Inter({
 
 const validationSchema = Yup.object().shape({
   password: Yup.string().required("Please enter your password"),
-  email: Yup.string()
-    .email("Please enter a valid email address")
-    .required("Please enter your email"),
+  username: Yup.string().required("Please enter your username"),
 });
 
 const LoginForm = (props: FormPropType) => {
@@ -24,14 +33,17 @@ const LoginForm = (props: FormPropType) => {
 
   return (
     <div className="flex flex-col gap-4">
+      {Object.keys(errors).length > 0 ? (
+        <Alert severity="error">{Object.values(errors)[0] as string}</Alert>
+      ) : null}
       <input
-        type="email"
-        name="email"
-        placeholder="Email"
+        type="text"
+        name="username"
+        placeholder="Username"
         className="outline-none rounded-md p-3"
         onChange={handleChange}
         onBlur={handleBlur}
-        value={values.email}
+        value={values.username}
       />
       <input
         type="password"
@@ -55,6 +67,39 @@ const LoginForm = (props: FormPropType) => {
 
 const Login = () => {
   const router = useRouter();
+  const [loginUser, { data }] = useLoginUserMutation();
+  const [getMeDetail] = useLazyGetUsersMeQuery();
+  const { authenticated } = useAuthStore();
+  const dispatch = useAppDispatch();
+
+  const handleSetToken = async (token: string) => {
+    try {
+      await axios.post("/api/setToken", {
+        token,
+      });
+      dispatch(setAuthData({ token: token, authenticated: true }));
+    } catch (err) {}
+  };
+
+  const handleGetMineDetail = async () => {
+    const res = await getMeDetail({});
+    if (res.data) {
+      dispatch(setAuthData({ profile: res.data }));
+      router.replace("/");
+    }
+  };
+
+  useEffect(() => {
+    if (authenticated) {
+      handleGetMineDetail();
+    }
+  }, [authenticated]);
+
+  useEffect(() => {
+    if (data) {
+      handleSetToken(data.access_token);
+    }
+  }, [data]);
 
   return (
     <main
@@ -85,10 +130,10 @@ const Login = () => {
           </h1>
         </div>
         <Forms
-          initialValue={{ email: "", password: "" }}
+          initialValue={{ username: "", password: "" }}
           validate={validationSchema}
-          onSubmit={() => {
-            router.replace("/");
+          onSubmit={async value => {
+            await loginUser({ body: value } as LoginBodyType);
           }}
         >
           <LoginForm {...({} as FormPropType)} />

@@ -4,9 +4,9 @@ import classNames from "classnames";
 import ThemeProvider from "./theme/themeProvider";
 import "./variables.scss";
 import "./globals.scss";
-import Navigator from "@/components/Navbar";
 import localFont from "next/font/local";
-import { CssBaseline } from "@mui/material";
+import WithNav from "./hoc/WithNav";
+import axios from "axios";
 
 const localInter = localFont({ src: "./fonts/inter.ttf", display: "auto" });
 
@@ -17,25 +17,29 @@ export const metadata: Metadata = {
   icons: { apple: "/icon.png" },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const getToken = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/getToken");
+    } catch (err) {}
+  };
+
+  const token = await getToken();
+
   return (
     <ThemeProvider>
       <html lang="en">
-        <head>
-          <link rel="stylesheet" type="text/css" href="./globals.scss"></link>
-        </head>
         <body
           className={classNames(
             localInter.className,
             " bg-whitePurple overflow-auto flex"
           )}
         >
-          <Navigator />
-          <div className="flex-1">{children}</div>
+          <WithNav>{children}</WithNav>
         </body>
       </html>
     </ThemeProvider>

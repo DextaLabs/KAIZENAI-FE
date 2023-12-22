@@ -2,7 +2,6 @@
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import Icon from "../Shared/Icon";
 import { activeRoute } from "@/app/utils/activeRoute";
 import { usePathname } from "next/navigation";

@@ -4,9 +4,17 @@ import Chart from "chart.js/auto";
 import chart from "chart.js";
 import { ThemeColor } from "@/app/theme";
 
-const Radar = () => {
+type propType = {
+  configs?: chart.ChartConfiguration;
+  options?: chart.ChartConfiguration["options"];
+  data: number[];
+};
+
+const Radar = (prop: propType) => {
+  const { configs = {}, options = { scales: { r: {} } }, data } = prop;
   const ref = useRef<HTMLCanvasElement>(null!);
-  const data: chart.ChartData = {
+
+  const chartData: chart.ChartData = {
     labels: [
       "Verbal Clarity",
       "Body Language",
@@ -16,7 +24,7 @@ const Radar = () => {
     ],
     datasets: [
       {
-        data: [50, 70, 92, 72, 85],
+        data: data,
         fill: true,
         backgroundColor: ThemeColor.WATER_PURPLE,
         borderColor: ThemeColor.PURPLE,
@@ -30,16 +38,12 @@ const Radar = () => {
 
   const config: chart.ChartConfiguration = {
     type: "radar",
-    data: data,
+    data: chartData,
     options: {
       maintainAspectRatio: false,
       aspectRatio: 1,
-      plugins: {
-        legend: {
-          display: false,
-        },
-      },
       scales: {
+        // @ts-ignore
         r: {
           grid: {
             color: [ThemeColor.GRID],
@@ -49,13 +53,17 @@ const Radar = () => {
             color: "transparent",
             backdropColor: "transparent",
             stepSize: 20,
+
             maxTicksLimit: 100,
           },
           angleLines: {
             color: "transparent",
           },
           pointLabels: {
-            color: ThemeColor.LIGHT_PURPLE,
+            callback: (label, index) => {
+              return [label, `${index}`];
+            },
+            color: [ThemeColor.LIGHT_PURPLE, "red", "green", "pink", "blue"],
             font: {
               size: 15,
               weight: 500,
@@ -65,7 +73,14 @@ const Radar = () => {
           max: 100,
         },
       },
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      ...options,
     },
+    ...configs,
   };
 
   useEffect(() => {

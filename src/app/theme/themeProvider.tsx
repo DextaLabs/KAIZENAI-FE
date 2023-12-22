@@ -7,12 +7,15 @@ import {
 import theme from "./index";
 import { Provider } from "react-redux";
 import store from "../store";
+import WithAuth from "../hoc/WithAuth";
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Provider store={store}>
-        <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+        <MuiThemeProvider theme={theme}>
+          <WithAuth>{children}</WithAuth>
+        </MuiThemeProvider>
       </Provider>
     </StyledEngineProvider>
   );

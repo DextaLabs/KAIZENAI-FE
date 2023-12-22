@@ -5,6 +5,8 @@ import {
   ROLES,
 } from "./enums";
 
+export const HIDE_NAV_ON = ["/auth/login"];
+
 export type RoleData = {
   image: string;
   firstName: string;

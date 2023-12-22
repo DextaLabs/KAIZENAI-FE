@@ -4,10 +4,12 @@ import { combineReducers } from "redux";
 import dashboard from "./dashboard";
 import authentication from "./authentication";
 import { dashboardApi } from "./dashboard/api";
+import { authApi } from "./authentication/api";
 
 const reducers = combineReducers({
   dashboard,
   authentication,
+  [authApi.reducerPath]: authApi.reducer,
   [dashboardApi.reducerPath]: dashboardApi.reducer,
 });
 
@@ -17,7 +19,7 @@ const store = configureStore({
     getDefaultMiddleware({
       immutableCheck: false,
       serializableCheck: false,
-    }).concat(dashboardApi.middleware),
+    }).concat(dashboardApi.middleware, authApi.middleware),
 });
 
 export type RootState = ReturnType<typeof reducers>;
