@@ -1,3 +1,8 @@
+export enum Role {
+  "DEVELOPER" = "Developer",
+  "MANGER" = "Manager",
+}
+
 export type userDetailType = {
   "User Detail": {
     username: string;
@@ -11,7 +16,7 @@ export type userDetailType = {
     state: string;
     country: string;
     postal_code: number;
-    role: string;
+    role: Role;
     department: string;
     hire_date: string;
   };

@@ -24,6 +24,7 @@ const config: Config = {
         purpleNav: "#6839A7",
         yellow: "#FFBF15",
         gray: "#EAEAEA",
+        placeholder: "#969AB8",
       },
       boxShadow: {
         shadowUp: "0 4px 30px rgba(0, 0, 0, 0.1)",

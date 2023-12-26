@@ -1,21 +1,18 @@
 "use client";
-import React from "react";
 import {
-  StyledEngineProvider,
   ThemeProvider as MuiThemeProvider,
+  StyledEngineProvider,
 } from "@mui/material";
-import theme from "./index";
+import React from "react";
 import { Provider } from "react-redux";
 import store from "../store";
-import WithAuth from "../hoc/WithAuth";
+import theme from "./index";
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <StyledEngineProvider injectFirst>
       <Provider store={store}>
-        <MuiThemeProvider theme={theme}>
-          <WithAuth>{children}</WithAuth>
-        </MuiThemeProvider>
+        <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
       </Provider>
     </StyledEngineProvider>
   );

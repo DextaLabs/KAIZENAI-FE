@@ -1,16 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { combineReducers } from "redux";
-import dashboard from "./dashboard";
 import authentication from "./authentication";
-import { dashboardApi } from "./dashboard/api";
 import { authApi } from "./authentication/api";
+import dashboard from "./dashboard";
+import { dashboardApi } from "./dashboard/api";
+import github from "./github";
+import { githubApi } from "./github/api";
 
 const reducers = combineReducers({
   dashboard,
   authentication,
+  github,
   [authApi.reducerPath]: authApi.reducer,
   [dashboardApi.reducerPath]: dashboardApi.reducer,
+  [githubApi.reducerPath]: githubApi.reducer,
 });
 
 const store = configureStore({
@@ -19,7 +23,11 @@ const store = configureStore({
     getDefaultMiddleware({
       immutableCheck: false,
       serializableCheck: false,
-    }).concat(dashboardApi.middleware, authApi.middleware),
+    }).concat(
+      dashboardApi.middleware,
+      authApi.middleware,
+      githubApi.middleware
+    ),
 });
 
 export type RootState = ReturnType<typeof reducers>;

@@ -1,14 +1,16 @@
 "use client";
+import { useAuthStore } from "@/app/store/authentication";
+import { activeRoute } from "@/app/utils/activeRoute";
 import { Typography } from "@mui/material";
+import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import Icon from "../Shared/Icon";
-import { activeRoute } from "@/app/utils/activeRoute";
 import { usePathname } from "next/navigation";
-import classNames from "classnames";
+import Icon from "../Shared/Icon";
 import Progress from "../Shared/Progress";
+import { Role } from "../Shared/Types/user";
 
-const NavItems = [
+const ManagerNavItems = [
   {
     label: "My Dashboard",
     icon: "dashboard",
@@ -34,9 +36,37 @@ const NavItems = [
     nested: false,
   },
 ];
+const DeveloperNavItems = [
+  {
+    label: "My Dashboard",
+    icon: "dashboard",
+    path: "/",
+    nested: false,
+  },
+  {
+    label: "Missions",
+    icon: "mission",
+    path: "/mission",
+    nested: false,
+  },
+  {
+    label: "Awards",
+    icon: "award",
+    path: "/award",
+    nested: false,
+  },
+];
 
 const Navigator = () => {
+  const { profile } = useAuthStore();
   const pathname = usePathname();
+
+  const NavItems =
+    profile["User Detail"].role === Role.DEVELOPER
+      ? DeveloperNavItems
+      : ManagerNavItems;
+
+  const userDetail = profile["User Detail"];
 
   return (
     <nav className="h-[100dvh] sticky top-0  w-[260px] bg-purpleNav py-[80px]">
@@ -52,10 +82,10 @@ const Navigator = () => {
 
       <div className="mt-4 text-center  px-5">
         <Typography variant="h4" className="text-white">
-          Hassan Ahmed
+          {`${userDetail.first_name} ${userDetail.last_name} `}
         </Typography>
         <Typography variant="h6" className="text-white">
-          Manager
+          {userDetail.role}
         </Typography>
       </div>
 

@@ -1,10 +1,9 @@
 import { layoutSpacing } from "@/app/utils/classes";
-import React from "react";
-import Header from "../Dashboard/Header";
-import { Typography } from "@mui/material";
-import Employee from "./Employee";
 import { Managers } from "@/app/utils/constant";
 import { ROLES } from "@/app/utils/enums";
+import { Typography } from "@mui/material";
+import Employee from "./Employee";
+import Header from "./Header";
 
 const Team = () => {
   const mangers = Managers.filter(i => i.role === ROLES.MANAGER);

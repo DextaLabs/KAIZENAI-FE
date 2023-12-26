@@ -1,15 +1,14 @@
 "use client";
+import { ThemeColor } from "@/app/theme";
 import { labelValue } from "@/app/utils/classes";
 import { RoleData } from "@/app/utils/constant";
-import Select from "@/components/Shared/Select";
+import { DATA_CATEGORY } from "@/app/utils/enums";
+import { getCodeOverview, getCommunicationOverview } from "@/app/utils/parser";
+import DropDown from "@/components/Shared/DropDown";
 import RadialChart from "@/components/Shared/charts/Radial";
 import { Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
 import { dataCategoryOption } from "..";
-import { getCodeOverview, getCommunicationOverview } from "@/app/utils/parser";
-import { DATA_CATEGORY } from "@/app/utils/enums";
-import { ThemeColor } from "@/app/theme";
 
 type propType = {
   dataCategory: DATA_CATEGORY;
@@ -172,7 +171,7 @@ const Overview = (props: propType) => {
           dataCategory
         ) && <div className="flex gap-5">{getOverviewData()}</div>}
 
-        <Select
+        <DropDown
           options={dataCategoryOption}
           value={dataCategory}
           onChange={handleUpdateCategory}

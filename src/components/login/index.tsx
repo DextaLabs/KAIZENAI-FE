@@ -1,21 +1,22 @@
-import styles from "./login.module.scss";
-import Forms from "@/components/Shared/Forms";
-import * as Yup from "yup";
-import { FormPropType } from "../Shared/Types/formPropType";
-import classNames from "classnames";
-import { Inter, Josefin_Sans } from "next/font/google";
-import Alert from "@mui/material/Alert";
+import { useAppDispatch } from "@/app/store";
+import { setAuthData, useAuthStore } from "@/app/store/authentication";
 import {
   useLazyGetUsersMeQuery,
   useLoginUserMutation,
 } from "@/app/store/authentication/api";
-import { LoginBodyType } from "../Shared/Types/login";
+import Forms from "@/components/Shared/Forms";
+import Alert from "@mui/material/Alert";
 import axios from "axios";
-import { useEffect } from "react";
-import { setAuthData, useAuthStore } from "@/app/store/authentication";
-import { useAppDispatch } from "@/app/store";
-import { id } from "date-fns/locale";
+import classNames from "classnames";
+import { Inter, Josefin_Sans } from "next/font/google";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import * as Yup from "yup";
+import Button from "../Shared/Button";
+import Input from "../Shared/Input";
+import { FormPropType } from "../Shared/Types/formPropType";
+import { LoginBodyType } from "../Shared/Types/login";
+import styles from "./login.module.scss";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 const inter = Inter({
@@ -36,31 +37,30 @@ const LoginForm = (props: FormPropType) => {
       {Object.keys(errors).length > 0 ? (
         <Alert severity="error">{Object.values(errors)[0] as string}</Alert>
       ) : null}
-      <input
+      <Input
         type="text"
         name="username"
         placeholder="Username"
-        className="outline-none rounded-md p-3"
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.username}
       />
-      <input
+      <Input
         type="password"
         name="password"
         placeholder="Password"
-        className="outline-none rounded-md p-3"
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.password}
       />
-      <button
+      <Button
         type="submit"
-        className="outline-none rounded-md p-3 bg-purple"
+        className="bg-purple hover:bg-purple"
         disabled={isSubmitting}
+        isSubmitting={isSubmitting}
       >
         Submit
-      </button>
+      </Button>
     </div>
   );
 };

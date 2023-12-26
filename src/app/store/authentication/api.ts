@@ -9,7 +9,7 @@ import { userDetailType } from "@/components/Shared/Types/user";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://192.168.0.116:8000",
+    baseUrl: process.env.NEXT_PUBLIC_BASE_URL_HARDIK,
     prepareHeaders,
   }),
   tagTypes: ["Auth"],

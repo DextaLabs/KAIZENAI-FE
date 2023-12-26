@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
-import React from "react";
+import axios from "axios";
 import classNames from "classnames";
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import React from "react";
+import "./globals.scss";
+import WithAuth from "./hoc/WithAuth";
+import WithNav from "./hoc/WithNav";
 import ThemeProvider from "./theme/themeProvider";
 import "./variables.scss";
-import "./globals.scss";
-import localFont from "next/font/local";
-import WithNav from "./hoc/WithNav";
-import axios from "axios";
 
 const localInter = localFont({ src: "./fonts/inter.ttf", display: "auto" });
 
@@ -39,7 +40,9 @@ export default async function RootLayout({
             " bg-whitePurple overflow-auto flex"
           )}
         >
-          <WithNav>{children}</WithNav>
+          <WithAuth>
+            <WithNav>{children}</WithNav>
+          </WithAuth>
         </body>
       </html>
     </ThemeProvider>

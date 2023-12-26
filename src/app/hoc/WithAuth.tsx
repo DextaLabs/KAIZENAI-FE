@@ -1,14 +1,26 @@
 "use client";
+import { Role } from "@/components/Shared/Types/user";
 import axios from "axios";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useAppDispatch } from "../store";
 import { setAuthData, useAuthStore } from "../store/authentication";
 import { useLazyGetUsersMeQuery } from "../store/authentication/api";
-import { useRouter } from "next/navigation";
 
 const WithAuth = ({ children }: { children: React.ReactNode }) => {
+  const path = usePathname();
+  const params = useParams();
   const dispatch = useAppDispatch();
   const { authenticated } = useAuthStore();
+
+  const handleIsManagerOnlyRoute = () => {
+    const paths = ["/team"];
+    if (params!.employeeId) {
+      paths.push(path!);
+    }
+
+    return paths;
+  };
 
   const router = useRouter();
   const [getMeDetail] = useLazyGetUsersMeQuery();
@@ -32,7 +44,14 @@ const WithAuth = ({ children }: { children: React.ReactNode }) => {
     const res = await getMeDetail({});
     if (res.data) {
       dispatch(setAuthData({ profile: res.data, authCheck: true }));
-      router.replace("/");
+
+      if (
+        (res.data["User Detail"].role === Role.DEVELOPER &&
+          handleIsManagerOnlyRoute().includes(path!)) ||
+        path === "/auth/login"
+      ) {
+        router.replace("/");
+      }
     } else {
       dispatch(
         setAuthData({ authenticated: false, token: "", authCheck: true })

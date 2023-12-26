@@ -1,4 +1,7 @@
+import { ThemeColor } from "@/app/theme";
 import {
+  ButtonProps,
+  CircularProgress,
   Button as MUIButton,
   Typography,
   TypographyProps,
@@ -8,37 +11,50 @@ import React from "react";
 
 type className = React.HTMLProps<HTMLElement>["className"];
 const roundedShadow: className =
-  "border-solid	px-4 sm:px-5 md:px-6 py-2 border-2 border-black rounded-full shadow-primaryShadow ";
-const roundedShadowFlat: className =
-  "border-solid	px-3 sm:px-4 md:px-5 py-1 border-2 border-black rounded-full shadow-primaryShadow ";
+  "outline-none rounded-md p-3  h-[32px] sm:h-[38px] md:h-[50px] disabled:cursor-not-allowed text-white flex gap-1";
 
 const variants = {
   "rounded-shadow": roundedShadow,
-  "rounded-shadow-flat": roundedShadowFlat,
 };
 
 type propType = {
   children: React.ReactNode;
+  isSubmitting?: boolean;
   childClassName?: React.HTMLProps<HTMLElement>["className"];
   className?: React.HTMLProps<HTMLElement>["className"];
   variant?: keyof typeof variants;
   typography?: TypographyProps["variant"];
-};
+} & Omit<ButtonProps, "className" | "children" | "variant">;
 
 const Button = (props: propType) => {
   const {
     children,
-    childClassName = "",
+    childClassName = "text-white normal-case",
     className = "",
     variant = "rounded-shadow",
+    isSubmitting = false,
     typography = "button",
+    type = "button",
+    ...rest
   } = props;
 
   return (
-    <MUIButton className={classNames(variants[variant], className)}>
+    <MUIButton
+      className={classNames(variants[variant], className)}
+      type={type}
+      sx={{
+        "&.Mui-disabled": {
+          pointerEvents: "unset",
+          color: ThemeColor.HALF_WHITE,
+          opacity: 0.7,
+        },
+      }}
+      {...rest}
+    >
       <Typography variant={typography} className={childClassName}>
         {children}
       </Typography>
+      {isSubmitting ? <CircularProgress size="16px" color="inherit" /> : null}
     </MUIButton>
   );
 };

@@ -24,7 +24,7 @@ const Forms = (props: propType) => {
     initialValues: initialValue,
     validationSchema: validate,
     onSubmit: async values => {
-      onSubmit(values);
+      await onSubmit(values);
     },
     validateOnChange: false,
 
@@ -34,10 +34,10 @@ const Forms = (props: propType) => {
   return (
     <form
       noValidate
-      onSubmit={e => {
+      onSubmit={async e => {
         e.preventDefault();
         e.stopPropagation();
-        handleSubmit(e);
+        await handleSubmit(e);
       }}
     >
       {Children.map(children, child =>

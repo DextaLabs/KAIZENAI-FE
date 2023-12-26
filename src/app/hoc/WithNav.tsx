@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
 import Navigator from "@/components/Navbar";
-import { useAuthStore } from "../store/authentication";
-import { usePathname } from "next/navigation";
-import { HIDE_NAV_ON } from "../utils/constant";
 import { CircularProgress } from "@mui/material";
+import { usePathname } from "next/navigation";
+import React from "react";
+import { useAuthStore } from "../store/authentication";
 import { ThemeColor } from "../theme";
+import { HIDE_NAV_ON } from "../utils/constant";
 
 const WithNav = ({ children }: { children: React.ReactNode }) => {
   const path = usePathname();

@@ -1,9 +1,9 @@
+import { userDetailType } from "@/components/Shared/Types/user";
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../index";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../index";
 import { authApi } from "./api";
-import { userDetailType } from "@/components/Shared/Types/user";
 
 export type AuthType = {
   loading: boolean;
@@ -18,7 +18,9 @@ export const initialState = {
   loading: false,
   authenticated: false,
   token: "",
-  profile: {} as userDetailType,
+  profile: {
+    "User Detail": {},
+  } as userDetailType,
   authCheck: false,
   redirectTo: "/",
 } as AuthType;

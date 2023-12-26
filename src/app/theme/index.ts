@@ -5,6 +5,7 @@ export enum ThemeColor {
   PRIMARY = "#191746",
   WHITE = "#F7F6FB",
   BLACK = "#000",
+  LIGHT_BLACK = "#00000060",
   PURPLE = "#8c35ff",
   WATER_PURPLE = "#8c35ff40",
   WATER_WHITE = "#ffffff33",
@@ -20,6 +21,7 @@ export enum ThemeColor {
   GRAY = "#EAEAEA",
   PURPLE_NAV = "#6839A7",
   ERROR = "#F00",
+  PLACEHOLDER = "#969AB8",
 }
 
 const theme = createTheme({
@@ -183,6 +185,17 @@ const theme = createTheme({
       },
       "@media (max-width:600px)": {
         fontSize: "10px",
+      },
+    },
+    button: {
+      fontWeight: 600,
+      fontSize: "15px",
+      lineHeight: 1.2,
+      "@media (max-width:900px)": {
+        fontSize: "15px",
+      },
+      "@media (max-width:600px)": {
+        fontSize: "15px",
       },
     },
   },

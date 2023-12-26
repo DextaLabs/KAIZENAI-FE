@@ -1,12 +1,21 @@
 "use client";
+import { useAuthStore } from "@/app/store/authentication";
 import { ThemeColor } from "@/app/theme";
 import { labelValue } from "@/app/utils/classes";
 import RadialChart from "@/components/Shared/charts/Radial";
 import { Typography } from "@mui/material";
+import { differenceInCalendarMonths } from "date-fns";
 import Image from "next/image";
-import React from "react";
 
 const Overview = () => {
+  const { profile } = useAuthStore();
+  const userDetail = profile["User Detail"];
+
+  const { first_name, last_name, department, role, country, hire_date } =
+    userDetail;
+
+  const duration = differenceInCalendarMonths(new Date(), new Date(hire_date));
+
   const overview = [
     {
       label: "Level",
@@ -38,16 +47,16 @@ const Overview = () => {
       <section className="flex flex-col flex-1 justify-between h-full py-10">
         <div className={labelValue}>
           <Typography variant="h1" className="text-darkPurple">
-            Hassan Ahmed
+            {first_name} {last_name}
           </Typography>
           <Typography variant="body1" className="text-lightPurple">
-            Senior Manager | Development Department
+            {role} | {department} Department
           </Typography>
           <Typography variant="body1" className="text-lightPurple font-bold">
-            Indian
+            {country}
           </Typography>
           <Typography variant="body1" className="text-lightPurple font-bold">
-            6 Months
+            {duration} Months
           </Typography>
         </div>
       </section>
