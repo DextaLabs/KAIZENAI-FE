@@ -1,4 +1,3 @@
-import axios from "axios";
 import classNames from "classnames";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -23,14 +22,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const getToken = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/api/getToken");
-    } catch (err) {}
-  };
-
-  const token = await getToken();
-
   return (
     <ThemeProvider>
       <html lang="en">

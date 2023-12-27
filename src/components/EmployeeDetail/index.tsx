@@ -1,10 +1,10 @@
 "use client";
 import { employeeDetailPagePropsType } from "@/app/team/[employeeId]/page";
 import { layoutSpacing } from "@/app/utils/classes";
-import React, { useState } from "react";
-import Header from "../Dashboard/Header";
-import RangePickerWrapper from "../RangePickerWrapper";
 import { Managers } from "@/app/utils/constant";
+import { useState } from "react";
+import RangePickerWrapper from "../RangePickerWrapper";
+import Header from "../Team/Header";
 import Content from "./Content";
 
 const EmployeeDetail = (props: employeeDetailPagePropsType) => {

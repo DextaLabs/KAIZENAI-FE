@@ -27,7 +27,7 @@ const WithAuth = ({ children }: { children: React.ReactNode }) => {
 
   const getToken = async () => {
     try {
-      const res = await axios.get("/api/getToken");
+      const res = await axios.get(`/api/getToken?${Date.now()}`);
       const token = res.data.token as string;
       if (token) {
         dispatch(setAuthData({ token: token, authenticated: true }));

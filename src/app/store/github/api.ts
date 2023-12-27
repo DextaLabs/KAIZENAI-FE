@@ -30,13 +30,13 @@ export const githubApi = createApi({
     }),
     fetchRepoDetail: builder.query({
       query: ({ token, repo }: { token: string; repo: string }) => ({
-        url: `/repos/${repo}?token=${token}`,
+        url: `/repo/${repo}?token=${token}`,
         method: "GET",
       }),
     }),
     fetchRepoContribution: builder.query({
       query: ({ token, repo }: { token: string; repo: string }) => ({
-        url: `/repos/${repo}/contributors_url?token=${token}`,
+        url: `/repo/${repo}/contributors_url?token=${token}`,
         method: "GET",
       }),
       transformResponse: (response: RepoContributionType) => {
@@ -48,7 +48,7 @@ export const githubApi = createApi({
     }),
     fetchRepoCommits: builder.query({
       query: ({ token, repo }: { token: string; repo: string }) => ({
-        url: `/repos/${repo}/commits?token=${token}`,
+        url: `/repo/${repo}/commits?token=${token}`,
         method: "GET",
       }),
       transformResponse: (response: RepoCommitsType) => {
@@ -60,7 +60,7 @@ export const githubApi = createApi({
     }),
     fetchRepoPulls: builder.query({
       query: ({ token, repo }: { token: string; repo: string }) => ({
-        url: `/repos/${repo}/pulls?token=${token}`,
+        url: `/repo/${repo}/pulls?token=${token}`,
         method: "GET",
       }),
       transformResponse: (response: RepoPullsType) => {

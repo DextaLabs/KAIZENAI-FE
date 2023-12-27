@@ -17,8 +17,10 @@ const WithNav = ({ children }: { children: React.ReactNode }) => {
     </div>
   ) : (
     <>
-      {authenticated && !HIDE_NAV_ON.includes(path!) ? <Navigator /> : null}
-      <div className="flex-1">{children}</div>
+      <>
+        {authenticated && !HIDE_NAV_ON.includes(path!) ? <Navigator /> : null}
+        <div className="flex-1">{children}</div>
+      </>
     </>
   );
 };

@@ -1,12 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import cookie from "cookie";
+import { TOKEN_KEY } from "@/app/utils/localStoreKey";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (req.method === "GET") {
       res.setHeader(
         "Set-Cookie",
-        cookie.serialize("token", req.body.token, {
+        cookie.serialize(TOKEN_KEY, req.body.token, {
           httpOnly: true,
           secure: process.env.NODE_ENV !== "development",
           expires: new Date(0),

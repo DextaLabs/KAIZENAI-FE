@@ -1,3 +1,4 @@
+"use client";
 import { ThemeColor } from "@/app/theme";
 import {
   ButtonProps,

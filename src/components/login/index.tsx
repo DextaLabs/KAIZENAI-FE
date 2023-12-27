@@ -74,7 +74,7 @@ const Login = () => {
 
   const handleSetToken = async (token: string) => {
     try {
-      await axios.post("/api/setToken", {
+      await axios.post(`/api/setToken?${Date.now()}`, {
         token,
       });
       dispatch(setAuthData({ token: token, authenticated: true }));
