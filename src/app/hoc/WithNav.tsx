@@ -17,10 +17,16 @@ const WithNav = ({ children }: { children: React.ReactNode }) => {
     </div>
   ) : (
     <>
-      <>
-        {authenticated && !HIDE_NAV_ON.includes(path!) ? <Navigator /> : null}
-        <div className="flex-1">{children}</div>
-      </>
+      {!authenticated && !["/auth/login"].includes(path!) ? (
+        <div className="h-[100dvh] w-full flex justify-center items-center">
+          <CircularProgress sx={{ color: ThemeColor.PURPLE }} />
+        </div>
+      ) : (
+        <>
+          {authenticated && !HIDE_NAV_ON.includes(path!) ? <Navigator /> : null}
+          <div className="flex-1">{children}</div>
+        </>
+      )}
     </>
   );
 };

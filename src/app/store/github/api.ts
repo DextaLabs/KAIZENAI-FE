@@ -1,6 +1,7 @@
 import {
   RepoCommitsType,
   RepoContributionType,
+  RepoDetailType,
   RepoPullsType,
   ReposType,
 } from "@/components/Shared/Types/github";
@@ -33,6 +34,12 @@ export const githubApi = createApi({
         url: `/repo/${repo}?token=${token}`,
         method: "GET",
       }),
+      transformResponse: (response: RepoDetailType) => {
+        if (response) {
+          return response;
+        }
+        return {} as RepoDetailType;
+      },
     }),
     fetchRepoContribution: builder.query({
       query: ({ token, repo }: { token: string; repo: string }) => ({

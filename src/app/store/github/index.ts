@@ -1,6 +1,7 @@
 import {
   RepoCommitsType,
   RepoContributionType,
+  RepoDetailType,
   RepoPullsType,
   ReposType,
 } from "@/components/Shared/Types/github";
@@ -17,6 +18,7 @@ export type GithubType = {
   contribution: RepoContributionType;
   commits: RepoCommitsType;
   pullRequests: RepoPullsType;
+  repoDetail: RepoDetailType;
 };
 
 export const initialState = {
@@ -25,6 +27,7 @@ export const initialState = {
   contribution: [],
   commits: [],
   pullRequests: {} as RepoPullsType,
+  repoDetail: {} as RepoDetailType,
   selectedRepo: undefined,
 } as GithubType;
 

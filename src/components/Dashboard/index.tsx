@@ -4,6 +4,7 @@ import { Managers } from "@/app/utils/constant";
 import { useState } from "react";
 import RangePickerWrapper from "../RangePickerWrapper";
 import Content from "./Content";
+import Feedback from "./Feedback";
 import Header from "./Header";
 
 const Dashboard = () => {
@@ -17,6 +18,7 @@ const Dashboard = () => {
       <Header {...Managers[0]} />
       <RangePickerWrapper setDates={setDates} from={from} to={to} />
       <Content />
+      <Feedback />
     </main>
   );
 };

@@ -50,6 +50,15 @@ export enum DATA_CATEGORY {
   "COMMUNICATION" = "communication",
   "CODE_OVERVIEW" = "codeOverview",
 }
+export enum FEEDBACK {
+  "LANGUAGE_PROFICIENCY" = "languageProficiency",
+  "CULTURAL_HARMONY" = "culturalHarmony",
+  "LISTENING_ABILITY" = "listeningAbility",
+  "ISSUE_RESOLUTION" = "issueResolution",
+  "CLARITY_OF_EXPRESSION" = "clarityOfExpression",
+  "COLLABORATION" = "collaboration",
+  "EMOTIONAL_INTELLIGENCE" = "emotionalIntelligence",
+}
 
 export enum THRESHOLD {
   "REQUIRED" = 75,
