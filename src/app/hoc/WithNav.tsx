@@ -11,6 +11,13 @@ const WithNav = ({ children }: { children: React.ReactNode }) => {
   const path = usePathname();
   const { authenticated, authCheck } = useAuthStore();
 
+  return (
+    <>
+      {authenticated && !HIDE_NAV_ON.includes(path!) ? <Navigator /> : null}
+      <div className="flex-1">{children}</div>
+    </>
+  );
+
   return !authCheck ? (
     <div className="h-[100dvh] w-full flex justify-center items-center">
       <CircularProgress sx={{ color: ThemeColor.PURPLE }} />

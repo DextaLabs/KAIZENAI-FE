@@ -1,8 +1,10 @@
+"use client";
 import { FEEDBACK } from "@/app/utils/enums";
 import RangePickerWrapper from "@/components/RangePickerWrapper";
 import DropDown from "@/components/Shared/DropDown";
 import { Typography } from "@mui/material";
 import { useState } from "react";
+import Comment from "./Comment";
 
 export const feedbackOption = [
   { label: "Language Proficiency", value: FEEDBACK.LANGUAGE_PROFICIENCY },
@@ -45,7 +47,7 @@ const Feedback = () => {
         </div>
       </div>
 
-      <div className="h-[200px]"></div>
+      <Comment />
     </section>
   );
 };

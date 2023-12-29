@@ -14,6 +14,7 @@ export enum ThemeColor {
   LIGHT_PURPLE = "#786C88",
   GRID = "#e2e2e2",
   GREEN = "#67C95F",
+  DARK_GREEN = "#34A853",
   PINK = "#FB8F8E",
   DARK_PURPLE = "#4c2185",
   DARK_BLUE = "#381a5f",
@@ -132,6 +133,17 @@ const theme = createTheme({
         fontSize: "18px",
       },
     },
+    h5: {
+      fontWeight: 600,
+      fontSize: "16px",
+      lineHeight: 1.2,
+      "@media (max-width:900px)": {
+        fontSize: "16px",
+      },
+      "@media (max-width:600px)": {
+        fontSize: "16px",
+      },
+    },
     h6: {
       fontWeight: 500,
       fontSize: "15px",
@@ -155,7 +167,7 @@ const theme = createTheme({
       },
     },
     body2: {
-      fontWeight: 300,
+      fontWeight: 400,
       fontSize: "15px",
       lineHeight: 1.2,
       "@media (max-width:900px)": {

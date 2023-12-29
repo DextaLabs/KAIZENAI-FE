@@ -37,7 +37,6 @@ const transparentClasses: Partial<SelectClasses> = {
 const MenuProps = {
   PaperProps: {
     style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       borderRadius: "10px",
     },
   },
@@ -73,6 +72,9 @@ export default function DropDown(props: propsType) {
     const sx: SxProps<Theme> = {
       ".MuiSelect-select": {
         paddingRight: "50px !important",
+      },
+      ".MuiPaper-root": {
+        maxHeight: "unset",
       },
     };
     switch (variant) {

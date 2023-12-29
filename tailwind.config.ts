@@ -25,6 +25,7 @@ const config: Config = {
         yellow: "#FFBF15",
         gray: "#EAEAEA",
         placeholder: "#969AB8",
+        darkGreen: "#34A853",
       },
       boxShadow: {
         shadowUp: "0 4px 30px rgba(0, 0, 0, 0.1)",

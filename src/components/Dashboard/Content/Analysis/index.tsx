@@ -4,10 +4,9 @@ import ThresholdWaring from "@/components/Shared/ThresholdWaring";
 import Line from "@/components/Shared/charts/Line";
 import Radar from "@/components/Shared/charts/Radar";
 import { Typography } from "@mui/material";
-import React from "react";
 
 const Analysis = () => {
-  const data = [20, 40, 60, 80, 100];
+  const data = [60, 40, 60, 80, 100];
   return (
     <>
       <div className="relative row-span-4 bg-halfWhite rounded-[16px] p-6">

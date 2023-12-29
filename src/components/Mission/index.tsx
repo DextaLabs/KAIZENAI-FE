@@ -1,3 +1,4 @@
+"use client";
 import { layoutSpacing } from "@/app/utils/classes";
 import { Managers } from "@/app/utils/constant";
 import { Typography } from "@mui/material";
@@ -71,13 +72,13 @@ const UnAchievedBadges: BadgesType = [
   },
   {
     title: "Pixel Pirate",
-    images: images[2],
+    images: images[0],
     description: "Win this badge by scoring a perfect score in managing",
     achieved: false,
   },
   {
     title: "Listening Leader",
-    images: images[3],
+    images: images[0],
     description: "Win this badge by scoring a perfect score in managing",
     achieved: false,
   },
@@ -89,7 +90,7 @@ const UnAchievedBadges: BadgesType = [
   },
   {
     title: "Team manager",
-    images: images[1],
+    images: images[0],
     description: "Win this badge by scoring a perfect score in managing",
     achieved: false,
   },
@@ -104,19 +105,19 @@ const Mission = () => {
         <Typography variant="h3" className={"text-darkPurple"}>
           Level 1
         </Typography>
-        <Badge Badges={Badges} />
+        <Badge Badges={Badges} level={1} />
       </div>
       <div className="flex flex-col gap-[18px]">
         <Typography variant="h3" className={"text-darkPurple"}>
           Level 2
         </Typography>
-        <Badge Badges={Badges} />
+        <Badge Badges={Badges} level={2} />
       </div>
       <div className="flex flex-col gap-[18px]">
         <Typography variant="h3" className={"text-darkPurple"}>
           Level 3
         </Typography>
-        <Badge Badges={UnAchievedBadges} />
+        <Badge Badges={UnAchievedBadges} level={3} />
       </div>
     </main>
   );

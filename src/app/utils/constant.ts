@@ -1,3 +1,4 @@
+import { ThemeColor } from "../theme";
 import {
   CODE_ANALYSIS,
   COMMUNICATION,
@@ -6,6 +7,16 @@ import {
 } from "./enums";
 
 export const HIDE_NAV_ON = ["/auth/login"];
+
+export const AVATAR_RANDOM_COLOR = [
+  ThemeColor.PINK,
+  ThemeColor.DARK_BLUE,
+  ThemeColor.YELLOW,
+  ThemeColor.PLACEHOLDER,
+  ThemeColor.WATER_PURPLE,
+  ThemeColor.GRID,
+  ThemeColor.LIGHT_PURPLE,
+];
 
 export type RoleData = {
   image: string;
