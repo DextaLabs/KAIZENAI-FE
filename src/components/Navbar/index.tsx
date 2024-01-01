@@ -29,12 +29,6 @@ const ManagerNavItems = [
     path: "/mission",
     nested: false,
   },
-  {
-    label: "Awards",
-    icon: "award",
-    path: "/award",
-    nested: false,
-  },
 ];
 const DeveloperNavItems = [
   {
@@ -47,12 +41,6 @@ const DeveloperNavItems = [
     label: "Missions",
     icon: "mission",
     path: "/mission",
-    nested: false,
-  },
-  {
-    label: "Awards",
-    icon: "award",
-    path: "/award",
     nested: false,
   },
 ];

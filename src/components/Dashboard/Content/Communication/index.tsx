@@ -3,7 +3,6 @@ import { labelValue } from "@/app/utils/classes";
 import ThresholdWaring from "@/components/Shared/ThresholdWaring";
 import RadialChart from "@/components/Shared/charts/Radial";
 import { Typography } from "@mui/material";
-import React from "react";
 
 const Communication = () => {
   const overview = [
@@ -25,6 +24,12 @@ const Communication = () => {
       color: ThemeColor.GREEN,
       tailwind: "text-green",
     },
+    {
+      label: "Emotional Intelligence",
+      value: 85,
+      color: ThemeColor.PURPLE_NAV,
+      tailwind: "text-purpleNav",
+    },
   ];
 
   return (
@@ -40,7 +45,7 @@ const Communication = () => {
           plotOptions={{
             radialBar: {
               hollow: {
-                size: "15%",
+                size: "5%",
               },
             },
           }}

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Icon from "../Shared/Icon";
 import { Typography } from "@mui/material";
 import { format } from "date-fns";
+import React, { useState } from "react";
+import Icon from "../Shared/Icon";
 import CustomDatePicker from "../Shared/RangePicker";
 import { DateRangeType } from "../Shared/Types";
 
@@ -15,8 +15,8 @@ const RangePickerWrapper = (props: propType) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const { from, to, setDates } = props;
 
-  const formatFrom = format(from, "ccc, MMM d");
-  const formatTo = format(to, "ccc, MMM d");
+  const formatFrom = format(from, "ccc, MMM d''yy");
+  const formatTo = format(to, "ccc, MMM d''yy");
 
   return (
     <>
