@@ -1,6 +1,6 @@
 export enum ROLES {
-  "EMPLOYEE" = "employee",
-  "MANAGER" = "manager",
+  "DEVELOPER" = "Developer",
+  "MANAGER" = "Manager",
 }
 
 export enum COMMUNICATION {

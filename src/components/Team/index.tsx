@@ -8,7 +8,7 @@ import Header from "./Header";
 
 const Team = () => {
   const mangers = Managers.filter(i => i.role === ROLES.MANAGER);
-  const employee = Managers.filter(i => i.role === ROLES.EMPLOYEE);
+  const employee = Managers.filter(i => i.role === ROLES.DEVELOPER);
 
   return (
     <div className={layoutSpacing}>
