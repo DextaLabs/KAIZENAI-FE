@@ -2,7 +2,7 @@
 import { Role } from "@/components/Shared/Types/user";
 import axios from "axios";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { useAppDispatch } from "../store";
 import { setAuthData, useAuthStore } from "../store/authentication";
 import { useLazyGetUsersMeQuery } from "../store/authentication/api";
@@ -60,15 +60,15 @@ const WithAuth = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  // useEffect(() => {
-  //   getToken();
-  // }, []);
+  useEffect(() => {
+    getToken();
+  }, []);
 
-  // useEffect(() => {
-  //   if (authenticated) {
-  //     handleGetMineDetail();
-  //   }
-  // }, [authenticated]);
+  useEffect(() => {
+    if (authenticated) {
+      handleGetMineDetail();
+    }
+  }, [authenticated]);
 
   return <>{children}</>;
 };

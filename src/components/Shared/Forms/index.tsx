@@ -1,5 +1,5 @@
 "use client";
-import { FormikValues, useFormik } from "formik";
+import { FormikErrors, FormikValues, useFormik } from "formik";
 import React, { Children, cloneElement } from "react";
 
 type propType = {
@@ -27,8 +27,14 @@ const Forms = (props: propType) => {
       await onSubmit(values);
     },
     validateOnChange: false,
-
     validateOnBlur: true,
+  });
+
+  const filteredError: FormikErrors<FormikValues> = {};
+  Object.keys(errors).forEach(key => {
+    if (key in touched) {
+      filteredError[key] = errors[key];
+    }
   });
 
   return (
@@ -45,7 +51,7 @@ const Forms = (props: propType) => {
           handleChange,
           values,
           isSubmitting,
-          errors,
+          errors: filteredError,
           handleBlur,
           touched,
         })

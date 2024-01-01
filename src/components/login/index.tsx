@@ -5,24 +5,18 @@ import {
   useLoginUserMutation,
 } from "@/app/store/authentication/api";
 import Forms from "@/components/Shared/Forms";
+import { Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import axios from "axios";
 import classNames from "classnames";
-import { Inter, Josefin_Sans } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import * as Yup from "yup";
 import Button from "../Shared/Button";
-import Input from "../Shared/Input";
+import OutlineInput from "../Shared/Input/OutlineInput";
 import { FormPropType } from "../Shared/Types/formPropType";
 import { LoginBodyType } from "../Shared/Types/login";
 import styles from "./login.module.scss";
-
-const josefin = Josefin_Sans({ subsets: ["latin"] });
-const inter = Inter({
-  weight: ["300", "400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-});
 
 const validationSchema = Yup.object().shape({
   password: Yup.string().required("Please enter your password"),
@@ -37,15 +31,17 @@ const LoginForm = (props: FormPropType) => {
       {Object.keys(errors).length > 0 ? (
         <Alert severity="error">{Object.values(errors)[0] as string}</Alert>
       ) : null}
-      <Input
+      <OutlineInput
         type="text"
+        icon="email"
         name="username"
         placeholder="Username"
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.username}
       />
-      <Input
+      <OutlineInput
+        icon="password"
         type="password"
         name="password"
         placeholder="Password"
@@ -55,11 +51,11 @@ const LoginForm = (props: FormPropType) => {
       />
       <Button
         type="submit"
-        className="bg-purple hover:bg-purple"
+        className="bg-purpleNav hover:bg-purpleNav"
         disabled={isSubmitting}
         isSubmitting={isSubmitting}
       >
-        Submit
+        Log In
       </Button>
     </div>
   );
@@ -108,26 +104,9 @@ const Login = () => {
         "flex gap-4 justify-center items-center"
       )}
     >
-      <div className="w-[400px] max-w-[100%]  px-4">
-        <div className="flex gap-2 justify-center mb-4">
-          <h1
-            className={classNames(
-              josefin.className,
-              inter.className,
-              "font-light text-4xl"
-            )}
-          >
-            DextaLabs
-          </h1>
-          <h1
-            className={classNames(
-              josefin.className,
-              inter.className,
-              "font-bold text-4xl text-purple"
-            )}
-          >
-            A.I
-          </h1>
+      <div className="w-[580px] max-w-full bg-white  pt-9 pb-16  px-24 rounded-[16px] shadow-shadowUp">
+        <div className="flex gap-2 justify-center mb-10">
+          <Typography variant="h2">Log in</Typography>
         </div>
         <Forms
           initialValue={{ username: "", password: "" }}

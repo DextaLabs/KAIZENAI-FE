@@ -1,3 +1,4 @@
+"use client";
 import { layoutSpacing } from "@/app/utils/classes";
 import { Managers } from "@/app/utils/constant";
 import { ROLES } from "@/app/utils/enums";
