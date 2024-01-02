@@ -6,12 +6,13 @@ import React, { useEffect } from "react";
 import { useAppDispatch } from "../store";
 import { setAuthData, useAuthStore } from "../store/authentication";
 import { useLazyGetUsersMeQuery } from "../store/authentication/api";
+import { setAuthorizationHeader } from "../utils/axiosInstance";
 
 const WithAuth = ({ children }: { children: React.ReactNode }) => {
   const path = usePathname();
   const params = useParams();
   const dispatch = useAppDispatch();
-  const { authenticated } = useAuthStore();
+  const { authenticated, token } = useAuthStore();
 
   const handleIsManagerOnlyRoute = () => {
     const paths = ["/team"];
@@ -21,6 +22,8 @@ const WithAuth = ({ children }: { children: React.ReactNode }) => {
 
     return paths;
   };
+
+  setAuthorizationHeader(token);
 
   const router = useRouter();
   const [getMeDetail] = useLazyGetUsersMeQuery();

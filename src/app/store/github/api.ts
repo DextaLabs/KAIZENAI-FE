@@ -11,7 +11,7 @@ import { prepareHeaders } from "../../utils/tokenManager";
 export const githubApi = createApi({
   reducerPath: "githubApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://20.240.201.12:8000/",
+    baseUrl: process.env.NEXT_PUBLIC_BASE_URL_VAIBHAV,
     prepareHeaders,
   }),
   tagTypes: ["github"],

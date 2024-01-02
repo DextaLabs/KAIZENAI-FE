@@ -4,7 +4,10 @@ import { ROLES } from "@/app/utils/enums";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 import Select from "../Shared/Select";
+import AddTeamMember from "./AddMember";
+import CreateTeam from "./CreateTeam";
 import Developers from "./Developer";
+import Manager from "./Manager";
 
 const UserType = [
   {
@@ -38,7 +41,22 @@ const Register = () => {
         />
       </div>
 
-      <Developers />
+      {userType === ROLES.DEVELOPER ? <Developers /> : <Manager />}
+
+      <section className="mt-9">
+        <Typography variant="h2" className="text-darkPurple">
+          Create Team (For manager)
+        </Typography>
+
+        <CreateTeam />
+      </section>
+      <section className="mt-9">
+        <Typography variant="h2" className="text-darkPurple">
+          Add Team Members (For manager)
+        </Typography>
+
+        <AddTeamMember />
+      </section>
     </main>
   );
 };

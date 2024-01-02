@@ -1,14 +1,16 @@
+import axios from "@/app/utils/axiosInstance";
 import Button from "@/components/Shared/Button";
 import Forms from "@/components/Shared/Forms";
 import Input from "@/components/Shared/Input";
 import { FormPropType } from "@/components/Shared/Types/formPropType";
+import { FormikValues } from "formik";
 import * as Yup from "yup";
 
 const DevelopersForm = (props: FormPropType) => {
   const { handleChange, values, isSubmitting, errors, handleBlur } = props;
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       <Input
         type="text"
         name="username"
@@ -134,7 +136,7 @@ const DevelopersForm = (props: FormPropType) => {
       <Input
         type="text"
         name="skills"
-        placeholder="Skills"
+        placeholder="Skills (Comma separated)"
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.skills}
@@ -232,7 +234,7 @@ const validationSchema = Yup.object().shape({
   date_of_birth: Yup.date(),
   department: Yup.string(),
   hire_date: Yup.date(),
-  skills: Yup.array().of(Yup.string()),
+  skills: Yup.string(),
   experience: Yup.string(),
   github_username: Yup.string(),
   education: Yup.string(),
@@ -256,19 +258,28 @@ const Developers = () => {
     state: "",
     city: "",
     country: "",
-    postal_code: null,
+    postal_code: undefined,
     date_of_birth: "",
     department: "",
     hire_date: "",
-    skills: [],
+    skills: "",
     experience: "",
     github_username: "",
     education: "",
     intitution: "",
     programing_language: "",
     technology_proficiency: "",
-    organization_id: null,
+    organization_id: undefined,
     profile_picture: "",
+  };
+
+  const handleCreateDeveloper = async (values: FormikValues) => {
+    values.skills = values.skills.split(",").filter((i: string) => !!i.trim());
+    try {
+      axios.post("/auth/register_user", {
+        body: { ...values, role: "Developer" },
+      });
+    } catch (err) {}
   };
 
   return (
@@ -276,7 +287,9 @@ const Developers = () => {
       <Forms
         initialValue={initialValue}
         validate={validationSchema}
-        onSubmit={() => {}}
+        onSubmit={async values => {
+          handleCreateDeveloper(values);
+        }}
       >
         <DevelopersForm {...({} as FormPropType)} />
       </Forms>
