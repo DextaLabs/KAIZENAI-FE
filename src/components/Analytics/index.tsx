@@ -1,6 +1,6 @@
 "use client";
-import { layoutSpacing } from "@/app/utils/classes";
-import { Managers } from "@/app/utils/constant";
+import { layoutSpacing } from "@/library/utils/classes";
+import { Managers } from "@/library/utils/constant";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import Header from "../Dashboard/Header";

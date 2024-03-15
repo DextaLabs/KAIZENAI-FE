@@ -1,5 +1,5 @@
+import { RootState } from "@/provider/store";
 import { BaseQueryApi } from "@reduxjs/toolkit/query";
-import { RootState } from "../store";
 
 export const prepareHeaders = async (
   headers: Headers,

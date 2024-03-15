@@ -1,11 +1,11 @@
 "use client";
-import { useAppDispatch } from "@/app/store";
+import { useAppDispatch } from "@/provider/store";
 import {
   resetAuthData,
   setAuthData,
   useAuthStore,
-} from "@/app/store/authentication";
-import { RoleData } from "@/app/utils/constant";
+} from "@/provider/store/authentication";
+import { RoleData } from "@/library/utils/constant";
 import { Popover, Typography } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";

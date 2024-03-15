@@ -1,7 +1,7 @@
 "use client";
 import { employeeDetailPagePropsType } from "@/app/team/[employeeId]/page";
-import { layoutSpacing } from "@/app/utils/classes";
-import { Managers } from "@/app/utils/constant";
+import { layoutSpacing } from "@/library/utils/classes";
+import { Managers } from "@/library/utils/constant";
 import { useState } from "react";
 import RangePickerWrapper from "../RangePickerWrapper";
 import Header from "../Team/Header";

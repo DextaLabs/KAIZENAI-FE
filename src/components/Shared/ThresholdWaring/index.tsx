@@ -1,4 +1,4 @@
-import { THRESHOLD } from "@/app/utils/enums";
+import { THRESHOLD } from "@/library/utils/enums";
 import { Typography } from "@mui/material";
 
 const ThresholdWaring = () => {

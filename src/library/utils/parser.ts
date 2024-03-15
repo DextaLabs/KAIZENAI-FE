@@ -1,4 +1,4 @@
-import { ThemeColor } from "../theme";
+import { ThemeColor } from "@/provider/theme";
 import { RoleData } from "./constant";
 import {
   CODE_ANALYSIS,

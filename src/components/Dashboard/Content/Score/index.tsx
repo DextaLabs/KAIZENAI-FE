@@ -1,4 +1,4 @@
-import { labelValue } from "@/app/utils/classes";
+import { labelValue } from "@/library/utils/classes";
 import Icon from "@/components/Shared/Icon";
 import ThresholdWaring from "@/components/Shared/ThresholdWaring";
 import { Typography } from "@mui/material";

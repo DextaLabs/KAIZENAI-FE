@@ -1,5 +1,5 @@
 "use client";
-import { RoleData } from "@/app/utils/constant";
+import { RoleData } from "@/library/utils/constant";
 import Progress from "@/components/Shared/Progress";
 import { Typography } from "@mui/material";
 import Image from "next/image";

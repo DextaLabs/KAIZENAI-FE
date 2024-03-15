@@ -1,15 +1,14 @@
-import { ThemeColor } from "@/app/theme";
-import { labelValue } from "@/app/utils/classes";
-import { RoleData } from "@/app/utils/constant";
-import {
-  COMMUNICATION_SCORE_LABEL,
-  COMMUNICATION_SCORE,
-  THRESHOLD,
-} from "@/app/utils/enums";
 import Line from "@/components/Shared/charts/Line";
 import Radar from "@/components/Shared/charts/Radar";
+import { labelValue } from "@/library/utils/classes";
+import { RoleData } from "@/library/utils/constant";
+import {
+  COMMUNICATION_SCORE,
+  COMMUNICATION_SCORE_LABEL,
+  THRESHOLD,
+} from "@/library/utils/enums";
+import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
-import React from "react";
 
 const Communication = (props: RoleData[0]) => {
   const { communicationScore } = props;

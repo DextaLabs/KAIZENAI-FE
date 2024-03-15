@@ -5,8 +5,8 @@ import {
   RepoPullsType,
   ReposType,
 } from "@/components/Shared/Types/github";
+import { prepareHeaders } from "@/library/utils/tokenManager";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { prepareHeaders } from "../../utils/tokenManager";
 
 export const githubApi = createApi({
   reducerPath: "githubApi",

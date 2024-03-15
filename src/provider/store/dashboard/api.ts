@@ -1,7 +1,7 @@
+import { prepareHeaders } from "@/library/utils/tokenManager";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { prepareHeaders } from "./../../utils/tokenManager";
-import store from "..";
 import { setDashboardData } from ".";
+import store from "..";
 
 export const dashboardApi = createApi({
   reducerPath: "dashboardApi",

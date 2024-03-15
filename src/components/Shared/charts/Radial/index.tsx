@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { ThemeColor } from "@/provider/theme";
 import ApexCharts from "apexcharts";
 import dynamic from "next/dynamic";
-import { ThemeColor } from "@/app/theme";
+import { useEffect, useRef, useState } from "react";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 

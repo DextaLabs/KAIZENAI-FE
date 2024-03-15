@@ -1,6 +1,6 @@
 "use client";
-import { useAuthStore } from "@/app/store/authentication";
-import { RoleData } from "@/app/utils/constant";
+import { RoleData } from "@/library/utils/constant";
+import { useAuthStore } from "@/provider/store/authentication";
 import { Typography } from "@mui/material";
 import Image from "next/image";
 

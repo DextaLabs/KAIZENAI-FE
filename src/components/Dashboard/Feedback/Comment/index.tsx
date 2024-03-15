@@ -1,5 +1,5 @@
 "use client";
-import { AVATAR_RANDOM_COLOR } from "@/app/utils/constant";
+import { AVATAR_RANDOM_COLOR } from "@/library/utils/constant";
 import { Avatar, Typography } from "@mui/material";
 
 const feedback = {

@@ -1,7 +1,7 @@
 "use client";
-import { layoutSpacing } from "@/app/utils/classes";
-import { Managers } from "@/app/utils/constant";
-import { ROLES } from "@/app/utils/enums";
+import { layoutSpacing } from "@/library/utils/classes";
+import { Managers } from "@/library/utils/constant";
+import { ROLES } from "@/library/utils/enums";
 import { Typography } from "@mui/material";
 import Employee from "./Employee";
 import Header from "./Header";

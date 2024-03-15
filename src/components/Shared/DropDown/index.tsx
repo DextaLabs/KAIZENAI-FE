@@ -1,4 +1,4 @@
-import { ThemeColor } from "@/app/theme";
+import { ThemeColor } from "@/provider/theme";
 import { SxProps, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import MuiSelect, {

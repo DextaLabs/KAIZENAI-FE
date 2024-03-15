@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import cookie from "cookie";
-import { TOKEN_KEY } from "@/app/utils/localStoreKey";
+import { TOKEN_KEY } from "@/library/utils/localStoreKey";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {

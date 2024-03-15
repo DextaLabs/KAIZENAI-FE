@@ -1,4 +1,4 @@
-import { ThemeColor } from "../theme";
+import { ThemeColor } from "@/provider/theme";
 import {
   CODE_ANALYSIS,
   COMMUNICATION,

@@ -1,7 +1,7 @@
-import { ThemeColor } from "@/app/theme";
-import { labelValue } from "@/app/utils/classes";
 import ThresholdWaring from "@/components/Shared/ThresholdWaring";
 import RadialChart from "@/components/Shared/charts/Radial";
+import { labelValue } from "@/library/utils/classes";
+import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 
 const Communication = () => {

@@ -1,8 +1,8 @@
 "use client";
-import { useAuthStore } from "@/app/store/authentication";
-import { ThemeColor } from "@/app/theme";
-import { labelValue } from "@/app/utils/classes";
 import RadialChart from "@/components/Shared/charts/Radial";
+import { labelValue } from "@/library/utils/classes";
+import { useAuthStore } from "@/provider/store/authentication";
+import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 import { differenceInCalendarMonths } from "date-fns";
 import Image from "next/image";

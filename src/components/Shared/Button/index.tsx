@@ -1,5 +1,5 @@
 "use client";
-import { ThemeColor } from "@/app/theme";
+import { ThemeColor } from "@/provider/theme";
 import {
   ButtonProps,
   CircularProgress,

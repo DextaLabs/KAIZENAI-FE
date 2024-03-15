@@ -1,8 +1,7 @@
 "use client";
-import { ThemeColor } from "@/app/theme";
 import Progress from "@/components/Shared/Progress";
+import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
-import React from "react";
 
 const Metrics = () => {
   const metrics: {

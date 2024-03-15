@@ -1,12 +1,12 @@
 "use client";
 import { Role } from "@/components/Shared/Types/user";
+import { setAuthorizationHeader } from "@/library/utils/axiosInstance";
 import axios from "axios";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import { useAppDispatch } from "../store";
-import { setAuthData, useAuthStore } from "../store/authentication";
-import { useLazyGetUsersMeQuery } from "../store/authentication/api";
-import { setAuthorizationHeader } from "../utils/axiosInstance";
+import { useAppDispatch } from "./../store";
+import { setAuthData, useAuthStore } from "./../store/authentication";
+import { useLazyGetUsersMeQuery } from "./../store/authentication/api";
 
 const WithAuth = ({ children }: { children: React.ReactNode }) => {
   const path = usePathname();

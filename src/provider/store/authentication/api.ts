@@ -1,10 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { prepareHeaders } from "../../utils/tokenManager";
 import {
   LoginBodyType,
   LoginResponseType,
 } from "@/components/Shared/Types/login";
 import { userDetailType } from "@/components/Shared/Types/user";
+import { prepareHeaders } from "@/library/utils/tokenManager";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const authApi = createApi({
   reducerPath: "authApi",

@@ -1,6 +1,6 @@
 "use client";
-import { layoutSpacing } from "@/app/utils/classes";
-import { Managers } from "@/app/utils/constant";
+import { layoutSpacing } from "@/library/utils/classes";
+import { Managers } from "@/library/utils/constant";
 import { Typography } from "@mui/material";
 import Header from "../Dashboard/Header";
 import Badge from "./Badge";

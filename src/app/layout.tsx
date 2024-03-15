@@ -2,10 +2,10 @@ import classNames from "classnames";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import React from "react";
+import WithAuth from "../provider/hoc/WithAuth";
+import WithNav from "../provider/hoc/WithNav";
+import ThemeProvider from "../provider/theme/themeProvider";
 import "./globals.scss";
-import WithAuth from "./hoc/WithAuth";
-import WithNav from "./hoc/WithNav";
-import ThemeProvider from "./theme/themeProvider";
 import "./variables.scss";
 
 const localInter = localFont({ src: "./fonts/inter.ttf", display: "auto" });

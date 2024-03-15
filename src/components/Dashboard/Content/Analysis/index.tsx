@@ -1,8 +1,8 @@
-import { ThemeColor } from "@/app/theme";
-import { THRESHOLD } from "@/app/utils/enums";
 import ThresholdWaring from "@/components/Shared/ThresholdWaring";
 import Line from "@/components/Shared/charts/Line";
 import Radar from "@/components/Shared/charts/Radar";
+import { THRESHOLD } from "@/library/utils/enums";
+import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 
 const Analysis = () => {

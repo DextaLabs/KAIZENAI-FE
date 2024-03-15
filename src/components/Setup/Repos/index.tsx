@@ -1,13 +1,13 @@
 "use client";
-import { useAppDispatch } from "@/app/store";
-import { setGithubData, useGithubStore } from "@/app/store/github";
+import { useAppDispatch } from "@/provider/store";
+import { setGithubData, useGithubStore } from "@/provider/store/github";
 import {
   useLazyFetchRepoCommitsQuery,
   useLazyFetchRepoContributionQuery,
   useLazyFetchRepoDetailQuery,
   useLazyFetchRepoPullsQuery,
   useLazyFetchReposQuery,
-} from "@/app/store/github/api";
+} from "@/provider/store/github/api";
 import Button from "@/components/Shared/Button";
 import Forms from "@/components/Shared/Forms";
 import Input from "@/components/Shared/Input";

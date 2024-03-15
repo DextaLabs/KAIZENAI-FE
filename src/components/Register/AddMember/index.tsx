@@ -1,4 +1,4 @@
-import axios from "@/app/utils/axiosInstance";
+import axios from "@/library/utils/axiosInstance";
 import Button from "@/components/Shared/Button";
 import Forms from "@/components/Shared/Forms";
 import Input from "@/components/Shared/Input";

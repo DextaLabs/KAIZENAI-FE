@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
+import { ThemeColor } from "@/provider/theme";
 import chart from "chart.js";
-import { ThemeColor } from "@/app/theme";
+import Chart from "chart.js/auto";
+import { useEffect, useRef } from "react";
 const Line = () => {
   const ref = useRef<HTMLCanvasElement>(null!);
   const data: chart.ChartData = {

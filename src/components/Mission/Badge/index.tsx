@@ -1,6 +1,6 @@
 "use client";
-import { ThemeColor } from "@/app/theme";
 import Modal from "@/components/Shared/Model";
+import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";

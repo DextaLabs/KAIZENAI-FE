@@ -1,6 +1,6 @@
 "use client";
-import { layoutSpacing } from "@/app/utils/classes";
-import { Managers } from "@/app/utils/constant";
+import { layoutSpacing } from "@/library/utils/classes";
+import { Managers } from "@/library/utils/constant";
 import { Badge } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";

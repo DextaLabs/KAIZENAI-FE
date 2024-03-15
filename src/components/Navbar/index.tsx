@@ -1,6 +1,6 @@
 "use client";
-import { useAuthStore } from "@/app/store/authentication";
-import { activeRoute } from "@/app/utils/activeRoute";
+import { useAuthStore } from "@/provider/store/authentication";
+import { activeRoute } from "@/library/utils/activeRoute";
 import { Typography } from "@mui/material";
 import classNames from "classnames";
 import Image from "next/image";

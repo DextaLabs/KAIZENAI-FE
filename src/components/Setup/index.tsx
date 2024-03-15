@@ -1,4 +1,4 @@
-import { layoutSpacing } from "@/app/utils/classes";
+import { layoutSpacing } from "@/library/utils/classes";
 import { Typography } from "@mui/material";
 import Repos from "./Repos";
 

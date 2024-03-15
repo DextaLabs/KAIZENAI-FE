@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Awards from "./Awards";
 import Overview from "./Overview";
-import { RoleData } from "@/app/utils/constant";
-import { DATA_CATEGORY } from "@/app/utils/enums";
+import { RoleData } from "@/library/utils/constant";
+import { DATA_CATEGORY } from "@/library/utils/enums";
 import Communication from "./Communication";
 import Metrics from "./Metrics";
 

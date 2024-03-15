@@ -1,9 +1,9 @@
-import { useAppDispatch } from "@/app/store";
-import { setAuthData, useAuthStore } from "@/app/store/authentication";
+import { useAppDispatch } from "@/provider/store";
+import { setAuthData, useAuthStore } from "@/provider/store/authentication";
 import {
   useLazyGetUsersMeQuery,
   useLoginUserMutation,
-} from "@/app/store/authentication/api";
+} from "@/provider/store/authentication/api";
 import Forms from "@/components/Shared/Forms";
 import { Typography } from "@mui/material";
 import Alert from "@mui/material/Alert";
