@@ -2,7 +2,6 @@
 import DropDown from "@/components/Shared/DropDown";
 import RadialChart from "@/components/Shared/charts/Radial";
 import { labelValue } from "@/library/utils/classes";
-import { RoleData } from "@/library/utils/constant";
 import { DATA_CATEGORY } from "@/library/utils/enums";
 import {
   getCodeOverview,
@@ -10,35 +9,28 @@ import {
 } from "@/library/utils/parser";
 import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
+import { differenceInCalendarMonths } from "date-fns";
 import Image from "next/image";
 import { dataCategoryOption } from "..";
 
 type propType = {
   dataCategory: DATA_CATEGORY;
   handleUpdateCategory: (value: string) => void;
-} & RoleData[0];
+} & any;
 
 const Overview = (props: propType) => {
-  const {
-    communication,
-    codeScore,
-    dataCategory,
-    handleUpdateCategory,
-    firstName,
-    lastName,
-    image,
-    level,
-    post,
-    origin,
-    duration,
-  } = props;
+  const { dataCategory, handleUpdateCategory, Data, Name, Role, Email } = props;
 
-  const communicationOverview = getCommunicationOverview(communication);
-  const codeOverview = getCodeOverview(codeScore);
+  const { Date: joinDate } = Data;
+
+  const duration = differenceInCalendarMonths(new Date(), new Date(joinDate));
+
+  const communicationOverview = getCommunicationOverview(Data);
+  const codeOverview = getCodeOverview({ codeCommits: 50, codeReviews: 13 });
   const aboutOverview = [
     {
       color: ThemeColor.YELLOW,
-      value: level * 10,
+      value: Data.Level,
       label: "Level",
       tailwind: `text-yellow`,
     },
@@ -146,11 +138,11 @@ const Overview = (props: propType) => {
       <div className="w-[300px] h-full">{getOverviewChart()}</div>
       <section className="flex flex-col flex-1 gap-5 justify-between h-full py-4">
         <div className={labelValue}>
-          <Typography variant="h1" className="text-darkPurple">
-            {firstName} {lastName}
+          <Typography variant="h1" className="text-darkPurple capitalize">
+            {Name}
           </Typography>
           <Typography variant="body1" className="text-lightPurple">
-            {post}
+            {Role}
           </Typography>
           {dataCategory === DATA_CATEGORY.ABOUT && (
             <>
@@ -158,7 +150,7 @@ const Overview = (props: propType) => {
                 variant="body1"
                 className="text-lightPurple font-bold"
               >
-                {origin}
+                {Email}
               </Typography>
               <Typography
                 variant="body1"
@@ -172,7 +164,7 @@ const Overview = (props: propType) => {
 
         {[DATA_CATEGORY.COMMUNICATION, DATA_CATEGORY.CODE_OVERVIEW].includes(
           dataCategory
-        ) && <div className="flex gap-5">{getOverviewData()}</div>}
+        ) && <div className="flex gap-5 lg:gap-8">{getOverviewData()}</div>}
 
         <DropDown
           options={dataCategoryOption}
@@ -181,7 +173,7 @@ const Overview = (props: propType) => {
         />
       </section>
       <Image
-        src={image}
+        src={"/assets/png/avatar.png"}
         alt="avatar"
         width={260}
         height={260}

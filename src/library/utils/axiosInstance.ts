@@ -1,7 +1,7 @@
 import defaultAxios from "axios";
 
 const axios = defaultAxios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL_HARDIK,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });
 
 export const setAuthorizationHeader = (token: string) => {

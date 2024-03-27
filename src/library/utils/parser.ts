@@ -9,12 +9,10 @@ import {
   COMMUNICATION_LABEL,
 } from "./enums";
 
-export const getCommunicationOverview = (
-  data: RoleData[0]["communication"]
-) => {
+export const getCommunicationOverview = (data: any) => {
   const parseData = Object.values(COMMUNICATION).map(i => ({
     color: ThemeColor[COMMUNICATION_COLOR_CODE[i]],
-    value: data[i],
+    value: data[i] ?? 0,
     label: COMMUNICATION_LABEL[i],
     tailwind: `text-${COMMUNICATION_COLOR_CODE[i].toLowerCase()}`,
   }));

@@ -1,7 +1,7 @@
 import Line from "@/components/Shared/charts/Line";
 import Radar from "@/components/Shared/charts/Radar";
+import Icon from "@/components/Shared/Icon";
 import { labelValue } from "@/library/utils/classes";
-import { RoleData } from "@/library/utils/constant";
 import {
   COMMUNICATION_SCORE,
   COMMUNICATION_SCORE_LABEL,
@@ -10,7 +10,7 @@ import {
 import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 
-const Communication = (props: RoleData[0]) => {
+const Communication = (props: any) => {
   const { communicationScore } = props;
   const data = [20, 40, 60, 80, 100];
 
@@ -18,7 +18,16 @@ const Communication = (props: RoleData[0]) => {
     <div className="mt-[30px] grid gap-[30px] grid-rows-[repeat(4,100px)] grid-cols-2">
       <div className="flex gap-[30px]">
         {Object.values(COMMUNICATION_SCORE).map(i => (
-          <div key={i} className="flex-1 bg-halfWhite rounded-[16px] p-6">
+          <div
+            key={i}
+            className="flex-1 flex relative bg-halfWhite rounded-[16px] gap-4 p-6"
+          >
+            <div className="h-[54px]">
+              <Icon
+                name={i === "Listening" ? "listening" : "resolution"}
+                className="h-full w-full"
+              />
+            </div>
             <div className={labelValue}>
               <Typography variant="subtitle1" className="text-lightPurple">
                 {COMMUNICATION_SCORE_LABEL[i]}

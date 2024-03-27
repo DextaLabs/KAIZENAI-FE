@@ -1,27 +1,32 @@
+import Icon from "@/components/Shared/Icon";
 import { labelValue } from "@/library/utils/classes";
 import { Typography } from "@mui/material";
-import React from "react";
 
 const Awards = () => {
   const awards = [
-    {
-      title: "Awards",
-      value: "Silver",
-    },
+    { icon: "award", title: "Awards", value: "Silver" },
     {
       title: "Level",
       value: "8",
+      icon: "level",
     },
     {
       title: "Mission",
       value: "34",
+      icon: "integration",
     },
   ];
 
   return (
     <div className="grid grid-cols-3 gap-[30px]  h-full">
       {awards.map(i => (
-        <div className="bg-halfWhite rounded-[16px] p-6" key={i.title}>
+        <div
+          className="flex items-center gap-3 bg-halfWhite rounded-[16px] p-6"
+          key={i.title}
+        >
+          <div className="h-[55px]" style={{ aspectRatio: 1 }}>
+            <Icon name={i.icon} className="h-full w-full" />
+          </div>
           <div className={labelValue}>
             <Typography variant="subtitle1" className="text-lightPurple">
               {i.title}

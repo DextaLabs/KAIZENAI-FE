@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import Awards from "./Awards";
-import Overview from "./Overview";
-import { RoleData } from "@/library/utils/constant";
 import { DATA_CATEGORY } from "@/library/utils/enums";
+import { useState } from "react";
+import Awards from "./Awards";
 import Communication from "./Communication";
 import Metrics from "./Metrics";
+import Overview from "./Overview";
 
 export const dataCategoryOption = [
   { label: "About", value: DATA_CATEGORY.ABOUT },
@@ -12,7 +11,7 @@ export const dataCategoryOption = [
   { label: "Code overview", value: DATA_CATEGORY.CODE_OVERVIEW },
 ];
 
-const Content = (props: RoleData[0]) => {
+const Content = (props: any) => {
   const [dataCategory, setDataCategory] = useState(dataCategoryOption[0].value);
 
   const handleUpdateCategory = (value: string) => {
@@ -30,7 +29,7 @@ const Content = (props: RoleData[0]) => {
         />
       </section>
       {dataCategory === DATA_CATEGORY.COMMUNICATION && (
-        <Communication {...props} />
+        <Communication communicationScore={props.Data} />
       )}
       {dataCategory === DATA_CATEGORY.CODE_OVERVIEW && <Metrics />}
     </>

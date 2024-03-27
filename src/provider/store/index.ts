@@ -7,14 +7,18 @@ import dashboard from "./dashboard";
 import { dashboardApi } from "./dashboard/api";
 import github from "./github";
 import { githubApi } from "./github/api";
+import teams from "./teams";
+import { teamApi } from "./teams/api";
 
 const reducers = combineReducers({
   dashboard,
   authentication,
   github,
+  teams,
   [authApi.reducerPath]: authApi.reducer,
   [dashboardApi.reducerPath]: dashboardApi.reducer,
   [githubApi.reducerPath]: githubApi.reducer,
+  [teamApi.reducerPath]: teamApi.reducer,
 });
 
 const store = configureStore({
@@ -26,7 +30,8 @@ const store = configureStore({
     }).concat(
       dashboardApi.middleware,
       authApi.middleware,
-      githubApi.middleware
+      githubApi.middleware,
+      teamApi.middleware
     ),
 });
 

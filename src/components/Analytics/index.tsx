@@ -1,5 +1,4 @@
 "use client";
-import { layoutSpacing } from "@/library/utils/classes";
 import { Managers } from "@/library/utils/constant";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
@@ -132,7 +131,7 @@ const Analytics = () => {
   }, [result]);
 
   return (
-    <main className={classNames(layoutSpacing)}>
+    <main className={classNames("p-9")}>
       <Header {...Managers[0]} />
       <div className={styles.wrapper} ref={ref}>
         {emotions.map(i => {

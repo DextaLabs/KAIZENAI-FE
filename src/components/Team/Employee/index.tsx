@@ -1,23 +1,21 @@
 "use client";
-import { RoleData } from "@/library/utils/constant";
 import Progress from "@/components/Shared/Progress";
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-const Employee = (props: RoleData[0]) => {
-  const { id, email, image, firstName, lastName, post, score } = props;
+const Employee = (props: any) => {
+  const { Email, Name, Role, Score, Data } = props;
 
   return (
     <Link
       className="bg-white w-[260px] rounded-2xl mb-[30px]"
-      href={`team/${id}`}
+      href={`team/${Data?.["User id"]}`}
     >
       <div className="p-6 ">
         <div className="m-auto text-center">
           <Image
-            src={image}
+            src={"/assets/png/avatar.png"}
             width={105}
             height={105}
             alt="avatar"
@@ -26,10 +24,10 @@ const Employee = (props: RoleData[0]) => {
         </div>
         <div className="mt-4 flex flex-col gap-[10px] items-center">
           <Typography variant="h6" className=" text-primary">
-            {firstName} {lastName}
+            {Name}
           </Typography>
           <Typography variant="body2" className="text-black">
-            {email}
+            {Email}
           </Typography>
         </div>
 
@@ -37,20 +35,20 @@ const Employee = (props: RoleData[0]) => {
           <div className="flex-1">
             <Progress
               height={6}
-              value={score}
+              value={Score}
               barcolor="YELLOW"
               trackcolor="WHITE_PURPLE"
             />
           </div>
           <Typography variant="h6" className="text-black">
-            {score}%
+            {Score}%
           </Typography>
         </div>
       </div>
       <div className="h-[3px] w-full bg-whitePurple shadow-lightShadow" />
       <div className="p-6 pt-4 text-center">
         <Typography variant="h6" className=" text-primary">
-          {post}
+          {Role}
         </Typography>
       </div>
     </Link>

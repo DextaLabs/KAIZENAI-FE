@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../index";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../index";
 import { dashboardApi } from "./api";
 
 export type DashboardDataType = {
@@ -25,7 +25,7 @@ export const dashboardSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(
       dashboardApi.endpoints.getDashboardData.matchPending,
-      (state, { payload }) => {
+      state => {
         if (!state.loading) {
           state.loading = true;
         }
@@ -33,7 +33,7 @@ export const dashboardSlice = createSlice({
     );
     builder.addMatcher(
       dashboardApi.endpoints.getDashboardData.matchFulfilled,
-      (state, { payload }) => {
+      state => {
         if (state.loading) {
           state.loading = false;
         }
@@ -41,7 +41,7 @@ export const dashboardSlice = createSlice({
     );
     builder.addMatcher(
       dashboardApi.endpoints.getDashboardData.matchRejected,
-      (state, { payload }) => {
+      state => {
         if (state.loading) {
           state.loading = false;
         }

@@ -1,5 +1,4 @@
 "use client";
-import { layoutSpacing } from "@/library/utils/classes";
 import { ROLES } from "@/library/utils/enums";
 import { Typography } from "@mui/material";
 import { useState } from "react";
@@ -24,7 +23,7 @@ const Register = () => {
   const [userType, setUserType] = useState(ROLES.MANAGER);
 
   return (
-    <main className={layoutSpacing}>
+    <main className={"p-9"}>
       <Typography variant="h2" className="text-darkPurple">
         Register User
       </Typography>

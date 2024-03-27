@@ -1,10 +1,9 @@
-import { layoutSpacing } from "@/library/utils/classes";
 import { Typography } from "@mui/material";
 import Repos from "./Repos";
 
 const Setup = () => {
   return (
-    <main className={layoutSpacing}>
+    <main className={"p-9"}>
       <Typography variant="h2" className="text-darkPurple">
         Configure Project
       </Typography>

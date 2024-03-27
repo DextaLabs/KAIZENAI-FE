@@ -1,5 +1,4 @@
 "use client";
-import { layoutSpacing } from "@/library/utils/classes";
 import { Managers } from "@/library/utils/constant";
 import { Badge } from "@mui/material";
 import Image from "next/image";
@@ -17,7 +16,7 @@ const Dashboard = () => {
   ]);
 
   return (
-    <main className={layoutSpacing}>
+    <main className={"p-9"}>
       <Header {...Managers[0]} />
       <div className="flex  justify-between">
         <RangePickerWrapper setDates={setDates} from={from} to={to} />

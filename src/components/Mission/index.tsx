@@ -1,5 +1,4 @@
 "use client";
-import { layoutSpacing } from "@/library/utils/classes";
 import { Managers } from "@/library/utils/constant";
 import { Typography } from "@mui/material";
 import Header from "../Dashboard/Header";
@@ -98,7 +97,7 @@ const UnAchievedBadges: BadgesType = [
 
 const Mission = () => {
   return (
-    <main className={layoutSpacing}>
+    <main className={"p-9"}>
       <Header {...Managers[0]} />
 
       <div className="flex flex-col gap-[18px]">

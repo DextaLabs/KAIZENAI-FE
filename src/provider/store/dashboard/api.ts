@@ -14,7 +14,7 @@ export const dashboardApi = createApi({
   endpoints: builder => ({
     getDashboardData: builder.query({
       query: () => `/`,
-      transformResponse: (response: { stickers: {} }) => {
+      transformResponse: (response: any) => {
         store.dispatch(setDashboardData([]));
         return response;
       },

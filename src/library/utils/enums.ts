@@ -4,30 +4,30 @@ export enum ROLES {
 }
 
 export enum COMMUNICATION {
-  "LANGUAGE_PROFICIENCY" = "languageProficiency",
-  "CULTURAL_HARMONY" = "culturalHarmony",
-  "COLLABORATION" = "collaboration",
+  "LANGUAGE_PROFICIENCY" = "Communication",
+  "CULTURAL_HARMONY" = "Cultural fluency",
+  "COLLABORATION" = "Engagement",
 }
 
 export enum COMMUNICATION_COLOR_CODE {
-  "languageProficiency" = "PURPLE",
-  "culturalHarmony" = "PINK",
-  "collaboration" = "GREEN",
+  "Communication" = "PURPLE",
+  "Cultural fluency" = "PINK",
+  "Engagement" = "GREEN",
 }
 
 export enum COMMUNICATION_LABEL {
-  "languageProficiency" = "Language Proficiency",
-  "culturalHarmony" = "Cultural Harmony",
-  "collaboration" = "Collaboration",
+  "Communication" = "Language Proficiency",
+  "Cultural fluency" = "Cultural Harmony",
+  "Engagement" = "Collaboration",
 }
 
 export enum COMMUNICATION_SCORE {
-  "LISTENING_ABILITY" = "listeningAbility",
-  "ISSUE_RESOLUTION" = "issueResolution",
+  "LISTENING_ABILITY" = "Listening",
+  "ISSUE_RESOLUTION" = "Innovative thinking",
 }
 export enum COMMUNICATION_SCORE_LABEL {
-  "listeningAbility" = "Listening Ability",
-  "issueResolution" = "Issue Resolution ",
+  "Listening" = "Listening Ability",
+  "Innovative thinking" = "Issue Resolution ",
 }
 
 export enum CODE_ANALYSIS {
