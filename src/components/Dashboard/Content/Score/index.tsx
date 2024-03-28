@@ -36,7 +36,6 @@ const Score = () => {
                 {i.value}
               </Typography>
             </div>
-            <ThresholdWaring />
           </div>
         </div>
       ))}

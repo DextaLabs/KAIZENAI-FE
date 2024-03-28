@@ -1,8 +1,10 @@
 "use client";
 import { Managers } from "@/library/utils/constant";
+import { useAuthStore } from "@/provider/store/authentication";
+import { useLoginUserDetailMutation } from "@/provider/store/authentication/api";
 import { Badge } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RangePickerWrapper from "../RangePickerWrapper";
 import Icon from "../Shared/Icon";
 import Content from "./Content";
@@ -10,10 +12,16 @@ import Feedback from "./Feedback";
 import Header from "./Header";
 
 const Dashboard = () => {
+  const [loginUserDetail] = useLoginUserDetailMutation();
+  const { profileDetail } = useAuthStore();
   const [[from, to], setDates] = useState<[Date, Date]>([
     new Date(),
     new Date(),
   ]);
+
+  useEffect(() => {
+    loginUserDetail({});
+  }, []);
 
   return (
     <main className={"p-9"}>
@@ -37,7 +45,18 @@ const Dashboard = () => {
         </div>
       </div>
       <Content />
-      <Feedback />
+      <Feedback
+        feedbacks={
+          profileDetail
+            ? {
+                Data: {
+                  ...profileDetail,
+                  Clarification: profileDetail.cultural_insights,
+                },
+              }
+            : undefined
+        }
+      />
     </main>
   );
 };

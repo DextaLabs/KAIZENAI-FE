@@ -8,20 +8,15 @@ type propType = {
   configs?: chart.ChartConfiguration;
   options?: chart.ChartConfiguration["options"];
   data: number[];
+  labels: string[];
 };
 
 const Radar = (prop: propType) => {
-  const { configs = {}, options = { scales: { r: {} } }, data } = prop;
+  const { configs = {}, options = { scales: { r: {} } }, data, labels } = prop;
   const ref = useRef<HTMLCanvasElement>(null!);
 
   const chartData: chart.ChartData = {
-    labels: [
-      "Verbal Clarity",
-      "Body Language",
-      "Interaction",
-      "Coherence",
-      "Confidence",
-    ],
+    labels: labels,
     datasets: [
       {
         data: data,

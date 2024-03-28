@@ -11,8 +11,15 @@ import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 
 const Communication = (props: any) => {
-  const { communicationScore } = props;
-  const data = [20, 40, 60, 80, 100];
+  const { employeeDetail } = props;
+
+  const data = [
+    employeeDetail?.["Technical Articulation"] ?? 0,
+    employeeDetail?.["Leadership Presence"] ?? 0,
+    employeeDetail?.Communication ?? 0,
+    employeeDetail?.["Innovative thinking"] ?? 0,
+    employeeDetail?.["Cultural fluency"] ?? 0,
+  ];
 
   return (
     <div className="mt-[30px] grid gap-[30px] grid-rows-[repeat(4,100px)] grid-cols-2">
@@ -33,7 +40,7 @@ const Communication = (props: any) => {
                 {COMMUNICATION_SCORE_LABEL[i]}
               </Typography>
               <Typography variant="h3" className="text-darkPurple">
-                {communicationScore[i]}%
+                {employeeDetail[i]}%
               </Typography>
             </div>
           </div>
@@ -46,6 +53,13 @@ const Communication = (props: any) => {
         </Typography>
         <div className="w-full h-[420px]">
           <Radar
+            labels={[
+              "Technical Articulation",
+              "Leadership Presence",
+              "Communication",
+              "Innovative thinking",
+              "Cultural fluency ",
+            ]}
             options={{
               scales: {
                 r: {
@@ -71,7 +85,7 @@ const Communication = (props: any) => {
                     color: data.map(i =>
                       i > THRESHOLD.REQUIRED
                         ? ThemeColor.LIGHT_PURPLE
-                        : ThemeColor.ERROR
+                        : ThemeColor.LIGHT_PURPLE
                     ),
                     font: {
                       size: 15,

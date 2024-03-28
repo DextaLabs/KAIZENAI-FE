@@ -1,22 +1,32 @@
 "use client";
-import { FEEDBACK } from "@/library/utils/enums";
 import RangePickerWrapper from "@/components/RangePickerWrapper";
 import DropDown from "@/components/Shared/DropDown";
+import { FEEDBACK } from "@/library/utils/enums";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 import Comment from "./Comment";
 
 export const feedbackOption = [
-  { label: "Language Proficiency", value: FEEDBACK.LANGUAGE_PROFICIENCY },
-  { label: "Cultural Harmony", value: FEEDBACK.CULTURAL_HARMONY },
-  { label: "Listening Ability", value: FEEDBACK.LISTENING_ABILITY },
-  { label: "Issue Resolution", value: FEEDBACK.ISSUE_RESOLUTION },
-  { label: "Clarity of Expression", value: FEEDBACK.CLARITY_OF_EXPRESSION },
-  { label: "Collaboration", value: FEEDBACK.COLLABORATION },
-  { label: "Emotional Intelligence", value: FEEDBACK.EMOTIONAL_INTELLIGENCE },
+  { label: "Feedback", value: FEEDBACK.FEEDBACK },
+  { label: "Kaizen Items Developer", value: FEEDBACK.KAIZEN_ITEMS_DEVELOPER },
+  { label: "Kaizen Items Manger", value: FEEDBACK.KAIZEN_ITEMS_MANGER },
+  { label: "Clarity of Expression", value: FEEDBACK.CLARIFICATION },
 ];
 
-const Feedback = () => {
+const Feedback = (props: any) => {
+  const { feedbacks } = props;
+
+  const feedBack = feedbacks?.Data[FEEDBACK.FEEDBACK] ?? "No data for feedback";
+  const kaizenItemsDeveloper =
+    feedbacks?.Data[FEEDBACK.KAIZEN_ITEMS_DEVELOPER] ??
+    "No data for kaizen items developer";
+  const kaizenItemsManager =
+    feedbacks?.Data[FEEDBACK.KAIZEN_ITEMS_MANGER] ??
+    "No data for kaizen items manager";
+  const clarity =
+    feedbacks?.Data[FEEDBACK.CLARIFICATION] ??
+    "No data for clarity of expression";
+
   const [feedbackCategory, setFeedbackCategory] = useState(
     feedbackOption[0].value
   );
@@ -28,6 +38,21 @@ const Feedback = () => {
 
   const handleUpdateCategory = (value: string) => {
     setFeedbackCategory(value as FEEDBACK);
+  };
+
+  const getCategoryFeedback = () => {
+    switch (feedbackCategory) {
+      case FEEDBACK.FEEDBACK:
+        return feedBack;
+      case FEEDBACK.KAIZEN_ITEMS_DEVELOPER:
+        return kaizenItemsDeveloper;
+      case FEEDBACK.KAIZEN_ITEMS_MANGER:
+        return kaizenItemsManager;
+      case FEEDBACK.CLARIFICATION:
+        return clarity;
+      default:
+        return "";
+    }
   };
 
   return (
@@ -47,7 +72,7 @@ const Feedback = () => {
         </div>
       </div>
 
-      <Comment />
+      <Comment feedback={getCategoryFeedback()} />
     </section>
   );
 };

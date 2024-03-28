@@ -1,6 +1,6 @@
 "use client";
-import { useAuthStore } from "@/provider/store/authentication";
 import { activeRoute } from "@/library/utils/activeRoute";
+import { useAuthStore } from "@/provider/store/authentication";
 import { Typography } from "@mui/material";
 import classNames from "classnames";
 import Image from "next/image";
@@ -23,24 +23,12 @@ const ManagerNavItems = [
     path: "/team",
     nested: true,
   },
-  {
-    label: "Missions",
-    icon: "mission",
-    path: "/mission",
-    nested: false,
-  },
 ];
 const DeveloperNavItems = [
   {
     label: "My Dashboard",
     icon: "dashboard",
     path: "/",
-    nested: false,
-  },
-  {
-    label: "Missions",
-    icon: "mission",
-    path: "/mission",
     nested: false,
   },
 ];

@@ -3,10 +3,7 @@ import DropDown from "@/components/Shared/DropDown";
 import RadialChart from "@/components/Shared/charts/Radial";
 import { labelValue } from "@/library/utils/classes";
 import { DATA_CATEGORY } from "@/library/utils/enums";
-import {
-  getCodeOverview,
-  getCommunicationOverview,
-} from "@/library/utils/parser";
+import { getCodeOverview } from "@/library/utils/parser";
 import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 import { differenceInCalendarMonths } from "date-fns";
@@ -25,7 +22,6 @@ const Overview = (props: propType) => {
 
   const duration = differenceInCalendarMonths(new Date(), new Date(joinDate));
 
-  const communicationOverview = getCommunicationOverview(Data);
   const codeOverview = getCodeOverview({ codeCommits: 50, codeReviews: 13 });
   const aboutOverview = [
     {
@@ -87,6 +83,33 @@ const Overview = (props: propType) => {
         );
     }
   };
+
+  const communicationOverview = [
+    {
+      label: "Clarification",
+      value: Data?.Communication ?? 0,
+      color: ThemeColor.PURPLE,
+      tailwind: "text-purple",
+    },
+    {
+      label: "Honesty",
+      value: Data?.Honesty ?? 0,
+      color: ThemeColor.PINK,
+      tailwind: "text-pink",
+    },
+    {
+      label: "Engagement",
+      value: Data?.Engagement ?? 0,
+      color: ThemeColor.GREEN,
+      tailwind: "text-green",
+    },
+    {
+      label: "Listening",
+      value: Data?.Listening ?? 0,
+      color: ThemeColor.PURPLE_NAV,
+      tailwind: "text-purpleNav",
+    },
+  ];
 
   const getOverviewData = () => {
     switch (dataCategory) {

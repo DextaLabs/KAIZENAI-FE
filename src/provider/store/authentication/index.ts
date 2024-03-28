@@ -10,6 +10,7 @@ export type AuthType = {
   authenticated: boolean;
   token: string;
   profile: userDetailType;
+  profileDetail: any;
   redirectTo: string;
   authCheck: boolean;
 };

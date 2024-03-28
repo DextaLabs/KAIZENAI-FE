@@ -1,6 +1,5 @@
 "use client";
-import { AVATAR_RANDOM_COLOR } from "@/library/utils/constant";
-import { Avatar, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 const feedback = {
   overview:
@@ -17,22 +16,19 @@ const feedback = {
     "This feedback aims to highlight your communication strengths and provide targeted recommendations for improvement. Your commitment to growth and development is acknowledged, and these suggestions are intended to support your continuous improvement in communication skills.",
 };
 
-const Comment = () => {
+const Comment = (props: any) => {
+  const { feedback } = props;
+
   return (
     <div className="mt-[30px] bg-white rounded-[16px] p-6 flex gap-4">
-      <Avatar
-        sx={{ bgcolor: AVATAR_RANDOM_COLOR[Math.floor(Math.random() * 7)] }}
-        alt="Jay Vaghani"
-        src="/static/images/avatar/1.jpg"
-      />
       <div>
-        <Typography variant="h5" className="mt-4 text-darkBlue">
-          Alex
+        <Typography
+          variant="body2"
+          className=" text-black whitespace-break-spaces"
+        >
+          {feedback}
         </Typography>
-        <Typography variant="body2" className="mt-5 text-black">
-          {feedback.overview}
-        </Typography>
-        <div className="mt-5">
+        {/* <div className="mt-5">
           <Typography
             variant="body2"
             className="text-purpleNav font-semibold inline-block"
@@ -84,7 +80,7 @@ const Comment = () => {
 
         <Typography variant="body2" className="mt-5 text-black">
           {feedback.summary}
-        </Typography>
+        </Typography> */}
       </div>
     </div>
   );

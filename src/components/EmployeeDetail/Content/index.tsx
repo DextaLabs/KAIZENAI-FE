@@ -1,3 +1,4 @@
+import Feedback from "@/components/Dashboard/Feedback";
 import { DATA_CATEGORY } from "@/library/utils/enums";
 import { useState } from "react";
 import Awards from "./Awards";
@@ -8,7 +9,7 @@ import Overview from "./Overview";
 export const dataCategoryOption = [
   { label: "About", value: DATA_CATEGORY.ABOUT },
   { label: "Communication", value: DATA_CATEGORY.COMMUNICATION },
-  { label: "Code overview", value: DATA_CATEGORY.CODE_OVERVIEW },
+  // { label: "Code overview", value: DATA_CATEGORY.CODE_OVERVIEW },
 ];
 
 const Content = (props: any) => {
@@ -21,15 +22,16 @@ const Content = (props: any) => {
   return (
     <>
       <section className="grid gap-[30px] grid-rows-[repeat(4,100px)] mt-5 ">
-        <Awards />
+        <Awards {...props} />
         <Overview
           {...props}
           dataCategory={dataCategory}
           handleUpdateCategory={handleUpdateCategory}
         />
       </section>
+      {dataCategory === DATA_CATEGORY.ABOUT && <Feedback feedbacks={props} />}
       {dataCategory === DATA_CATEGORY.COMMUNICATION && (
-        <Communication communicationScore={props.Data} />
+        <Communication employeeDetail={props.Data} />
       )}
       {dataCategory === DATA_CATEGORY.CODE_OVERVIEW && <Metrics />}
     </>

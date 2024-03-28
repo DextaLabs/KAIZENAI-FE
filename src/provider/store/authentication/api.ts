@@ -5,6 +5,8 @@ import {
 import { userDetailType } from "@/components/Shared/Types/user";
 import { prepareHeaders } from "@/library/utils/tokenManager";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setAuthData } from ".";
+import store from "..";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -22,6 +24,19 @@ export const authApi = createApi({
         body: data,
       }),
     }),
+    loginUserDetail: builder.mutation<LoginResponseType, {}>({
+      query: () => ({
+        url: `/auth/login_user_data`,
+        method: "POST",
+        body: {},
+      }),
+      transformResponse: (response: any) => {
+        store.dispatch(
+          setAuthData({ profileDetail: response?.feedback_data?.[0] })
+        );
+        return response;
+      },
+    }),
     getUsersMe: builder.query<userDetailType, {}>({
       query: () => ({
         url: `/auth/me`,
@@ -31,4 +46,8 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginUserMutation, useLazyGetUsersMeQuery } = authApi;
+export const {
+  useLoginUserMutation,
+  useLazyGetUsersMeQuery,
+  useLoginUserDetailMutation,
+} = authApi;

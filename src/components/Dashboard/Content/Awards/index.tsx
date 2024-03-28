@@ -1,23 +1,26 @@
-import { labelValue } from "@/library/utils/classes";
 import Icon from "@/components/Shared/Icon";
+import { labelValue } from "@/library/utils/classes";
+import { useAuthStore } from "@/provider/store/authentication";
 import { Typography } from "@mui/material";
 
 const Awards = () => {
+  const { profileDetail } = useAuthStore();
+
   const awards = [
     {
       icon: "award",
       title: "Awards",
-      value: "Silver",
+      value: profileDetail?.awards ?? "-",
     },
     {
       icon: "level",
       title: "Level",
-      value: "8",
+      value: profileDetail?.level ?? "-",
     },
     {
       icon: "integration",
       title: "Integration",
-      value: "34",
+      value: profileDetail?.integration ?? "-",
     },
   ];
 

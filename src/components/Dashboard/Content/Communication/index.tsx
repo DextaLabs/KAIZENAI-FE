@@ -1,32 +1,34 @@
-import ThresholdWaring from "@/components/Shared/ThresholdWaring";
 import RadialChart from "@/components/Shared/charts/Radial";
 import { labelValue } from "@/library/utils/classes";
+import { useAuthStore } from "@/provider/store/authentication";
 import { ThemeColor } from "@/provider/theme";
 import { Typography } from "@mui/material";
 
 const Communication = () => {
+  const { profileDetail } = useAuthStore();
+
   const overview = [
     {
-      label: "Language Proficiency",
-      value: 87,
+      label: "Clarification",
+      value: profileDetail?.clarification ?? 0,
       color: ThemeColor.PURPLE,
       tailwind: "text-purple",
     },
     {
-      label: "Cultural Harmony",
-      value: 64,
+      label: "Honesty",
+      value: profileDetail?.honesty ?? 0,
       color: ThemeColor.PINK,
       tailwind: "text-pink",
     },
     {
-      label: "Collaboration",
-      value: 45,
+      label: "Engagement",
+      value: profileDetail?.engagement ?? 0,
       color: ThemeColor.GREEN,
       tailwind: "text-green",
     },
     {
-      label: "Emotional Intelligence",
-      value: 85,
+      label: "Listening",
+      value: profileDetail?.listning ?? 0,
       color: ThemeColor.PURPLE_NAV,
       tailwind: "text-purpleNav",
     },
@@ -63,7 +65,6 @@ const Communication = () => {
           </div>
         ))}
       </div>
-      <ThresholdWaring />
     </div>
   );
 };

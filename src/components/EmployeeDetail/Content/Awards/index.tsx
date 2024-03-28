@@ -2,17 +2,18 @@ import Icon from "@/components/Shared/Icon";
 import { labelValue } from "@/library/utils/classes";
 import { Typography } from "@mui/material";
 
-const Awards = () => {
+const Awards = (props: any) => {
+  const { Data } = props;
   const awards = [
-    { icon: "award", title: "Awards", value: "Silver" },
+    { icon: "award", title: "Awards", value: Data?.Awards ?? 0 },
     {
       title: "Level",
-      value: "8",
+      value: Data?.Level,
       icon: "level",
     },
     {
-      title: "Mission",
-      value: "34",
+      title: "Communication",
+      value: Data?.Communication,
       icon: "integration",
     },
   ];
