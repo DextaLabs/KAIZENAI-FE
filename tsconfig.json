@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "types": ["node"], // Add this line if not already present
+    "baseUrl": "src", 
+    "paths": {
+      "@/*": ["*"] 
+    }
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
